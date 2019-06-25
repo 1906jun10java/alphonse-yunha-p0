@@ -1,0 +1,8 @@
+employee:
+add car, remove car, accept offer, reject offer, view all payments.
+exit from menu (for all sub-menus),
+
+customer:
+view cars, view payment history, make offer, view remaining payment for-
+each(owned) car.
+exit from menu (for all sub-menus)
