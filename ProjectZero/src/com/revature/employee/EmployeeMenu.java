@@ -1,11 +1,11 @@
-package com.revature.menu;
+package com.revature.employee;
 
-import com.revature.employee.*;
 import java.util.Scanner;
+import com.revature.menu.*;
 
-public class Login {
-
-	public void LoginPage() {
+public class EmployeeMenu {
+	
+	public void EmployeeMenu() {
 		EmployeeMenu drive2 = new EmployeeMenu();
 		VariableCheck variables = new VariableCheck();
 		Scanner sc = new Scanner(System.in);
@@ -15,10 +15,10 @@ public class Login {
 		while (variables.getLoop() == true) {
 
 			if (variables.getLogin() == false) {
-				System.out.println("1. Username \n2. employee \n3. customer  \n4. to enter");
+				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer");
 				while (!sc.hasNextInt()) {
 					System.out.println(
-							"Invalid input try again \n1. Username \n2. employee \n3. customer \n4. to enter");
+							"1. Add Car \n2. Remove Car \n3. Accept/Decline Offer");
 					sc.next();
 				}
 
@@ -26,21 +26,13 @@ public class Login {
 
 				switch (variables.getMenuOption()) {
 				case 1:
-					System.out.print("User: ");
-					variables.setUser(sc.next());
-					System.out.print("Password: ");
-					variables.setPass(sc.next());
+					System.out.println("Added Car");
 					break;
 				case 2:
-					variables.setEmployee(true);
-					variables.setCustomer(false);
-					System.out.println("you are an employee");
-					drive2.EmployeeMenu();
+					System.out.println("Removed Car");
 					break;
 				case 3:
-					variables.setEmployee(false);
-					variables.setCustomer(true);
-					System.out.println("you are a customer");
+					System.out.println("Accepted/Declined Offer");
 					break;
 				case 4:
 					System.out.print("Enter");
@@ -71,5 +63,4 @@ public class Login {
 
 		}
 	}
-
 }
