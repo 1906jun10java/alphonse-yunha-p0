@@ -15,7 +15,7 @@ public class Login {
 		while (variables.getLoop() == true) {
 
 			if (variables.getLogin() == false) {
-				System.out.println("1. Username \n2. employee \n3. customer  \n4. to enter");
+				System.out.println("1. Login \n2. employee \n3. customer  \n4. to enter");
 				while (!sc.hasNextInt()) {
 					System.out.println(
 							"Invalid input try again \n1. Username \n2. employee \n3. customer \n4. to enter");
