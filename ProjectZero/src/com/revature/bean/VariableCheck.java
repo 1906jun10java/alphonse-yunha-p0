@@ -1,6 +1,7 @@
 package com.revature.bean;
 
 //test
+//trying to push Alphonse
 
 public class VariableCheck {
 
