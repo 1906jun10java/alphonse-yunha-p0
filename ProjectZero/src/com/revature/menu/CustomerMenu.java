@@ -44,12 +44,7 @@ public class CustomerMenu{
 		        	customer.ViewCarPaymentDetails();
 		            break;
 		        case 5:
-		        	System.out.println("Exiting");
-		        	
-		        	variables.setLoop(false);
-		        	
-		        	user.setTravelTo("login");
-		        	
+		        	customer.Exit(user, variables);
 		            break;
 		        default: 
 		        	customer.ResetUserValues(user, variables);

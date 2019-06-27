@@ -68,6 +68,13 @@ public class CustomerFunctions {
     			+ " please enter your selected options correctly");
 		
 	}
+	public void Exit(User user, VariableCheck variables) {
+		System.out.println("Exiting");
+    	variables.setLoop(false);
+    	user.setTravelTo("login");
+    	
+		
+	}
 
 		
 	
