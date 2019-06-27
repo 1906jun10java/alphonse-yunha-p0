@@ -1,17 +1,13 @@
 package com.revature.menu;
-import java.util.List;
 import java.util.Scanner;
 
-import com.revature.bean.Car;
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
 import com.revature.bean.*;
 public class EmployeeMenu extends EmployeeFunctions{
 	public User LoginEmployee(User user) {
-		Login drive = new Login();
 		VariableCheck variables = new VariableCheck();
 		EmployeeFunctions employeefunctions = new EmployeeFunctions();
-		Car car = new Car();
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);
