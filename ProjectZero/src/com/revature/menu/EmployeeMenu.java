@@ -1,12 +1,10 @@
 package com.revature.menu;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.revature.employee.Car;
 public class EmployeeMenu {
 	public User LoginEmployee(User user) {
-		List<Car> car2 = new ArrayList();
 		Login drive = new Login();
 		VariableCheck variables = new VariableCheck();
 		Car car = new Car();
@@ -104,6 +102,8 @@ public class EmployeeMenu {
 				}else if (variables.getMenuOption() == 4) {
 					System.out.println("====================================================================");
 				}else if(variables.getMenuOption() == 5) {
+					if(user.getEmployee() == true)
+						user.setTravelTo("login");
 					drive.LoginPage();
 				}
 			}
