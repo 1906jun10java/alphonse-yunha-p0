@@ -2,12 +2,15 @@ package com.revature.menu;
 import java.util.List;
 import java.util.Scanner;
 
-import com.revature.employee.Car;
+import com.revature.bean.Car;
+import com.revature.bean.User;
+import com.revature.bean.VariableCheck;
 public class EmployeeMenu {
 	public User LoginEmployee(User user) {
 		Login drive = new Login();
 		VariableCheck variables = new VariableCheck();
 		Car car = new Car();
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);

@@ -1,4 +1,4 @@
-package com.revature.menu;
+package com.revature.bean;
 
 public class User {
 	protected String user;

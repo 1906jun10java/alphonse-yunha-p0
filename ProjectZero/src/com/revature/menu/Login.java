@@ -2,6 +2,9 @@ package com.revature.menu;
 
 import java.util.Scanner;
 
+import com.revature.bean.User;
+import com.revature.bean.VariableCheck;
+
 public class  Login extends VariableCheck{
 
 

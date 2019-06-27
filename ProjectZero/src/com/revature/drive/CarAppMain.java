@@ -1,6 +1,9 @@
-package com.revature.menu;
+package com.revature.drive;
 
-import com.revature.employee.*;
+import com.revature.bean.User;
+import com.revature.menu.CustomerHome;
+import com.revature.menu.EmployeeMenu;
+import com.revature.menu.Login;
 
 public class CarAppMain{
 

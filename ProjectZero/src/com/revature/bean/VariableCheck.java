@@ -1,4 +1,4 @@
-package com.revature.menu;
+package com.revature.bean;
 
 public class VariableCheck {
 
@@ -8,9 +8,6 @@ public class VariableCheck {
 	protected int offer;
 	protected boolean login;
 	protected boolean loop;
-	
-	
-	
 	
 	/**
 	 * @param employee the employee to set
