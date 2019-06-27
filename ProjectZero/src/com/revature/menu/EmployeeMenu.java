@@ -5,12 +5,13 @@ import java.util.Scanner;
 import com.revature.bean.Car;
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
-public class EmployeeMenu {
+import com.revature.bean.*;
+public class EmployeeMenu extends EmployeeFunctions{
 	public User LoginEmployee(User user) {
 		Login drive = new Login();
 		VariableCheck variables = new VariableCheck();
+		EmployeeFunctions employeefunctions = new EmployeeFunctions();
 		Car car = new Car();
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);
@@ -28,18 +29,14 @@ public class EmployeeMenu {
 
 				switch (variables.getMenuOption()) {
 				case 1:
-					System.out.println("Enter year manufactured: ");
-					car.setYearManufactured(sc.nextInt());
-					System.out.println("Enter make of car: ");
-					car.setMake(sc.next());
-					System.out.println("Enter model of car:");
-					car.setModel(sc.next());
+					employeefunctions.addCarToLot();
+			
 					/*
 					 * Add car by year manufactured, Make of the car, and model of the car.
 					 */
 					break;
 				case 2:
-					System.out.println("Removed Car");
+					employeefunctions.removeCarFromLot();
 					/*
 					 * remove car using sql statement.
 					 * Depending on how to delete could be by IDS or Name of the car.
@@ -47,23 +44,22 @@ public class EmployeeMenu {
 					 */
 					break;
 				case 3:
-					System.out.println("Accepted/Declined Offer");
+					employeefunctions.offerDecide();
 					/*
 					 * add another menu to show offers and to accept or decline them. 
 					 */
 					break;
 				case 4:
-					System.out.println("View Payments");
+					employeefunctions.viewPayments();
 					break;
 				case 5:
-					System.out.println("Returned to Menu");
+					employeefunctions.returnToMenu();
 					/*
 					 * Return to the menu.
 					 */
 					break;
 				case 6:
-					System.out.println("Good bye.");
-					System.exit(0);
+					employeefunctions.exitProgram();
 					break;
 					
 				/*
@@ -91,28 +87,11 @@ public class EmployeeMenu {
 					System.out.println("Something went wrong. Please enter your selected options correctly.");
 					System.out.println("====================================================================");
 				}
-				if(variables.getMenuOption() == 1) {
-				System.out.println(
-						"Year: " + car.getYearManufactured() + " Make: " + car.getMake() + " Model: " + car.getModel());
-				System.out.println("====================================================================");
-				}
-				else if(variables.getMenuOption() == 2) {
-					System.out.println("TESTTTTTTTTTTTTTTTTTT 2");
-					System.out.println("====================================================================");
-				}else if (variables.getMenuOption() == 3){
-					System.out.println("TESETTTTTETETETETTTT 3");
-					System.out.println("====================================================================");
-				}else if (variables.getMenuOption() == 4) {
-					System.out.println("====================================================================");
-				}else if(variables.getMenuOption() == 5) {
-					if(user.getEmployee() == true)
-						user.setTravelTo("login");
-					drive.LoginPage();
 				}
 			}
-
-		}
 		return user;
 	}
+
+
 
 }
