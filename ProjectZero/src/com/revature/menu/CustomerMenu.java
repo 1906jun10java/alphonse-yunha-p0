@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
 
-public class CustomerHome{
+public class CustomerMenu{
 	public User LoginCustomer(User user) {
 		VariableCheck variables = new VariableCheck();
 		
