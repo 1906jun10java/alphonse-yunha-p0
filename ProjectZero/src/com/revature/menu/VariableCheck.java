@@ -1,58 +1,21 @@
 package com.revature.menu;
 
 public class VariableCheck {
-	private String user;
-	private String pass;
-	private int menuOption;
-	private boolean employee;
-	private boolean customer;
-	private boolean login;
-	private boolean loop;
+
 	
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
-	/**
-	 * @return the pass
-	 */
-	public String getPass() {
-		return pass;
-	}
-	/**
-	 * @param pass the pass to set
-	 */
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-	/**
-	 * @return the employee
-	 */
-	public boolean getEmployee() {
-		return employee;
-	}
+	protected int menuOption;
+	protected int carNumber;
+	protected int offer;
+	protected boolean login;
+	protected boolean loop;
+	
+	
+	
+	
 	/**
 	 * @param employee the employee to set
 	 */
-	public void setEmployee(boolean employee) {
-		this.employee = employee;
-	}
-	/**
-	 * @return the customer
-	 */
 	
-	
-	public boolean getCustomer() {
-		return customer;
-	}
-	/**
-	 * @param customer the customer to set
-	 */
-	public void setCustomer(boolean customer) {
-		this.customer = customer;
-	}
 	/**
 	 * @return the menuOption
 	 */
@@ -89,6 +52,35 @@ public class VariableCheck {
 	public void setLoop(boolean loop) {
 		this.loop = loop;
 	}
+	/**
+	 * @return the carNumber
+	 */
+	public int getCarNumber() {
+		return carNumber;
+	}
+	/**
+	 * @param carNumber the carNumber to set
+	 */
+	public void setCarNumber(int carNumber) {
+		this.carNumber = carNumber;
+	}
+	/**
+	 * @return the offer
+	 */
+	public int getOffer() {
+		return offer;
+	}
+	/**
+	 * @param offer the offer to set
+	 */
+	public void setOffer(int offer) {
+		this.offer = offer;
+	}
+	/**
+	 * @return the travelTo
+	 */
+
+
 	
 
 }
