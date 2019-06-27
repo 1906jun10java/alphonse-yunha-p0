@@ -1,5 +1,7 @@
 package com.revature.bean;
 
+//test
+
 public class VariableCheck {
 
 	
