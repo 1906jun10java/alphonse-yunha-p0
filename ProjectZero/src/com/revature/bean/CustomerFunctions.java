@@ -8,12 +8,14 @@ public class CustomerFunctions {
     	//from the sql table
     	System.out.println("1.car, 2.car, 3.car");
 	}
+	
 	public void ViewMyCars() {
 		//displays list of available cars previously purchased 
     	//from the sql table
 
     	System.out.println("You have no cars ");
 	}
+	
 	public Object MakeAnOffer(VariableCheck variables) {
 		String selectionMenu = (""
 				+ "1. View cars on lot "
@@ -52,10 +54,12 @@ public class CustomerFunctions {
 			return variables;
     	//}
 	}
+	
 	public void ViewCarPaymentDetails() {
 		//use sql to list the remaining payment for each of the owned cars
     	System.out.println("you own no money so far");
 	}
+	
 	public void ResetUserValues(User user, VariableCheck variables) {
 		user.setCustomer(false);
     	user.setEmployee(false);
@@ -68,12 +72,11 @@ public class CustomerFunctions {
     			+ " please enter your selected options correctly");
 		
 	}
+	
 	public void Exit(User user, VariableCheck variables) {
 		System.out.println("Exiting");
     	variables.setLoop(false);
     	user.setTravelTo("login");
-    	
-		
 	}
 
 		
