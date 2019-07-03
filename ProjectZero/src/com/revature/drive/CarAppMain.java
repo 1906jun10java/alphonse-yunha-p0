@@ -4,6 +4,7 @@ import com.revature.bean.User;
 import com.revature.menu.CustomerMenu;
 import com.revature.menu.EmployeeMenu;
 import com.revature.menu.Login;
+import com.revature.menu.SignupMenu;
 
 public class CarAppMain{
 
@@ -39,6 +40,10 @@ public class CarAppMain{
 			else if(user.getEmployee() == true) {
 				EmployeeMenu employee = new EmployeeMenu();
 				employee.LoginEmployee(user);
+			}
+			else if(user.getTravelTo().equals("signup")) {
+				SignupMenu newSignin = new SignupMenu();
+				newSignin.signinNewUser(user);
 			}
 			
 		}
