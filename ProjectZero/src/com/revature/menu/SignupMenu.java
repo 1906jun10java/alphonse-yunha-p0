@@ -67,8 +67,6 @@ public class SignupMenu{
 						+"\nPassword confirmed: "+newUser.getConfirmPassword()
 						+"\nFirst name: "+newUser.getFirstName()
 						+"\nLast name: "+newUser.getLastName());
-			
-			
 		}
 		return user;
 	}
