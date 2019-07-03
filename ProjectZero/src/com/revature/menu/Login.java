@@ -18,7 +18,8 @@ public class  Login extends VariableCheck{
 		String selectionMenu = "1. Username & Password"
 							+ "\n2. employee "
 							+ "\n3. customer   "
-							+ "\n4. to enter";
+							+ "\n4. to enter"
+							+ "\n5. to signup";
 		while(variables.getLoop() == true) {
 			
 			//if(variables.getLogin() == false) {
@@ -69,6 +70,12 @@ public class  Login extends VariableCheck{
 		        	//call or maker function here to compare the 
 		        	//usernames and password in the employee/customer table
 		        	
+		            break;
+		            
+		        case 5:
+		        	user.setTravelTo("signup");
+		        	user.setCustomer(false);
+		        	System.out.println("you are an employee");
 		            break;
 		        default: 
 		        	//variables.setCustomer(false);
