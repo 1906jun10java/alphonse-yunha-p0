@@ -21,7 +21,8 @@ public class SignupMenu{
 				+ "\n3. confirm password "
 				+ "\n4. First name   "
 				+ "\n5. Last name   "
-				+ "\n6. Save");
+				+ "\n6. Save & exit"
+				+ "\n7. Exit");
 		while(newUser.getLoop() == true) {
 				
 				System.out.println(selectionMenu);
@@ -60,7 +61,7 @@ public class SignupMenu{
 		        	
 		    }
 				
-				System.out.println("Username: "+user.getUser()
+				System.out.println(""
 						+"\nUsername: "+newUser.getUserName()
 						+"\n Password: "+newUser.getPassword()
 						+"\nPassword confirmed: "+newUser.getConfirmPassword()

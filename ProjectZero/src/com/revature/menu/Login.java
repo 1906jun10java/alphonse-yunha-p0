@@ -74,6 +74,7 @@ public class  Login extends VariableCheck{
 		            
 		        case 5:
 		        	user.setTravelTo("signup");
+		        	variables.setLoop(false);
 		        	user.setCustomer(false);
 		        	System.out.println("you are an employee");
 		            break;

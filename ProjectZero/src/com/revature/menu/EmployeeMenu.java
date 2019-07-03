@@ -15,9 +15,9 @@ public class EmployeeMenu extends EmployeeFunctions{
 		while (variables.getLoop() == true) {
 
 			if (variables.getLogin() == false) {
-				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Show remaining payments \n5. Return to Menu \n6. Exit");
+				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Show remaining payments \n5. Exit");
 				while (!sc.hasNextInt()) {
-					System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Return to Menu \n5, Exit");
+					System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4.Exit");
 					sc.next();
 				}
 
@@ -25,14 +25,14 @@ public class EmployeeMenu extends EmployeeFunctions{
 
 				switch (variables.getMenuOption()) {
 				case 1:
-					employeefunctions.addCarToLot();
+					employeefunctions.addCarToLot(user);
 			
 					/*
 					 * Add car by year manufactured, Make of the car, and model of the car.
 					 */
 					break;
 				case 2:
-					employeefunctions.removeCarFromLot();
+					employeefunctions.removeCarFromLot(user);
 					/*
 					 * remove car using sql statement.
 					 * Depending on how to delete could be by IDS or Name of the car.
@@ -40,22 +40,17 @@ public class EmployeeMenu extends EmployeeFunctions{
 					 */
 					break;
 				case 3:
-					employeefunctions.offerDecide();
+					employeefunctions.offerDecide(user);
 					/*
 					 * add another menu to show offers and to accept or decline them. 
 					 */
 					break;
 				case 4:
-					employeefunctions.viewPayments();
+					employeefunctions.viewPayments(user);
 					break;
+				
 				case 5:
-					employeefunctions.returnToMenu();
-					/*
-					 * Return to the menu.
-					 */
-					break;
-				case 6:
-					employeefunctions.exitProgram();
+					employeefunctions.exitProgram(variables, user);
 					break;
 					
 				/*
