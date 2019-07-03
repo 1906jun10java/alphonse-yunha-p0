@@ -1,0 +1,31 @@
+CREATE TABLE USERS(
+user_id INTEGER PRIMARY KEY NOT NULL,
+user_name VARCHAR(20) NOT NULL,
+user_pass VARCHAR(20) NOT NULL,
+user_type INTEGER
+);
+
+CREATE TABLE LOT (
+car_id INTEGER PRIMARY KEY  NOT NULL,
+car_year INT NOT NULL, 
+car_make VARCHAR(20) NOT NULL,
+car_model VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE OWNED (
+owned_id INTEGER PRIMARY KEY NOT NULL,
+car_id int NOT NULL,
+user_id int NOT NULL,
+FOREIGN KEY (car_id) REFERENCES LOT(car_id),
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+owned_amount_left INT
+);
+
+CREATE TABLE PENDINGOFFER(
+offer_id INTEGER PRIMARY KEY NOT NULL,
+user_id INT NOT NULL,
+car_id INT NOT NULL,
+offer_price INT NOT NULL,
+FOREIGN KEY (car_id) REFERENCES LOT(car_id),
+FOREIGN KEY (user_id) REFERENCES USERS(user_id)
+);
