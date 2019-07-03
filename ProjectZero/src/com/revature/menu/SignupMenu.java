@@ -51,9 +51,12 @@ public class SignupMenu{
 		        	signin.LastName(newUser);
 		            break;
 		        case 6:
-		        	signin.Save(user, newUser);
+		        	signin.LastName(newUser);
 		            break;
 		        case 7:
+		        	signin.Save(user, newUser);
+		            break;
+		        case 8:
 		        	signin.Exit(user, newUser);
 		            
 		        default: 
