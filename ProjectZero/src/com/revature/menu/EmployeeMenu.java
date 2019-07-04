@@ -1,9 +1,11 @@
 package com.revature.menu;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
 import com.revature.bean.*;
+
 public class EmployeeMenu extends EmployeeFunctions{
 	public User LoginEmployee(User user) {
 		VariableCheck variables = new VariableCheck();
@@ -11,6 +13,7 @@ public class EmployeeMenu extends EmployeeFunctions{
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);
+		EmployeeFunctions ef = new EmployeeFunctions();
 
 		while (variables.getLoop() == true) {
 
@@ -25,6 +28,13 @@ public class EmployeeMenu extends EmployeeFunctions{
 
 				switch (variables.getMenuOption()) {
 				case 1:
+					//employeefunctions.addCarToLot();
+					try {
+						System.out.println(ef.getCarList());
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					employeefunctions.addCarToLot(user);
 			
 					/*
