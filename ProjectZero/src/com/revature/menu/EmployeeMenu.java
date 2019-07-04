@@ -9,7 +9,6 @@ import com.revature.bean.*;
 public class EmployeeMenu extends EmployeeFunctions{
 	public User LoginEmployee(User user) {
 		VariableCheck variables = new VariableCheck();
-		EmployeeFunctions employeefunctions = new EmployeeFunctions();
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);
@@ -18,31 +17,23 @@ public class EmployeeMenu extends EmployeeFunctions{
 		while (variables.getLoop() == true) {
 
 			if (variables.getLogin() == false) {
-				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Show remaining payments \n5. Exit");
+				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Show remaining payments \n5 View Cars in Lot\n6. Exit");
 				while (!sc.hasNextInt()) {
 					System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4.Exit");
 					sc.next();
 				}
 
 				variables.setMenuOption(sc.nextInt());
-
 				switch (variables.getMenuOption()) {
 				case 1:
-					//employeefunctions.addCarToLot();
-					try {
-						System.out.println(ef.getCarList());
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					employeefunctions.addCarToLot(user);
-			
+					ef.addCarToLot(car);
+					System.out.println("Added Car into Database.");
 					/*
 					 * Add car by year manufactured, Make of the car, and model of the car.
 					 */
 					break;
 				case 2:
-					employeefunctions.removeCarFromLot(user);
+					ef.removeCarFromLot(user);
 					/*
 					 * remove car using sql statement.
 					 * Depending on how to delete could be by IDS or Name of the car.
@@ -50,17 +41,24 @@ public class EmployeeMenu extends EmployeeFunctions{
 					 */
 					break;
 				case 3:
-					employeefunctions.offerDecide(user);
+					ef.offerDecide(user);
 					/*
 					 * add another menu to show offers and to accept or decline them. 
 					 */
 					break;
 				case 4:
-					employeefunctions.viewPayments(user);
+					ef.viewPayments(user);
 					break;
-				
 				case 5:
-					employeefunctions.exitProgram(variables, user);
+					try {
+						System.out.println(ef.getCarList());
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				case 6:
+					ef.exitProgram(variables, user);
 					break;
 					
 				/*

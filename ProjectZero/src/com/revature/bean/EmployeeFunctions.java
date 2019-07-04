@@ -6,27 +6,38 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import com.revature.dao.CarDAO;
+import com.revature.dao.CarDAOImpl;
 import com.revature.dao.LotDAO;
 import com.revature.util.ConnFactory;
 
-public class EmployeeFunctions implements LotDAO {
-	public static ConnFactory cf = ConnFactory.getInstance();
+public class EmployeeFunctions {
+	protected Car car = new Car();
+	int yearManufactured = 0;
+	String carMake = " ";
+	String carModel = " ";
+	CarDAO cd = new CarDAOImpl();
+	int userId = 1;
+	Scanner sc = new Scanner(System.in);
+	public static Connection cf = ConnFactory.getConnection();
 
-	public List<Car> getCarList() throws SQLException{
-		List<Car> carList = new ArrayList<Car>();
-		Connection conn = cf.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM LOT");
-		Car s = null;
-		while(rs.next()) {
-			s = new Car(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
-			carList.add(s);
-		}
-		return carList;
-	}
-	public void addCarToLot(User user) {
-		System.out.println("Add Car.");
+	public void addCarToLot(Car car)  {
+	System.out.println("Enter year manufactured: ");
+	yearManufactured = sc.nextInt();
+	
+	System.out.println("Enter car make: ");
+	carMake = sc.nextLine();
+	carMake = sc.nextLine();
+	
+	
+	System.out.println("Enter car model: ");
+	carModel = sc.nextLine();
+	
+	car = new Car(userId, yearManufactured, carMake, carModel);
+	cd.addCarToLot(car);
+		
 	}
 	public void removeCarFromLot(User user) {
 		System.out.println("Removed.");
@@ -46,6 +57,16 @@ public class EmployeeFunctions implements LotDAO {
 		System.out.println("exiting.");
 		//System.exit(0);
 	}
-
-
+	public List<Car> getCarList() throws SQLException{
+		List<Car> carList = new ArrayList<Car>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM LOT");
+		Car s = null;
+		while(rs.next()) {
+			s = new Car(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
+			carList.add(s);
+		}
+		return carList;
+	}
 }
