@@ -126,10 +126,9 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public void removeCarFromLot(Car car) {
-		String sql = "DELETE FROM LOT WHERE CAR_YEAR = '?' AND CAR_MAKE = '?' AND CAR_MODEL = '?'";
+		String sql = "DELETE FROM LOT WHERE CAR_YEAR = ? AND CAR_MAKE = ? AND CAR_MODEL = ?";
 		try(Connection conn = ConnFactory.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)){
-
 			ps.setInt(1, car.getYearManufactured());
 			ps.setString(2, car.getMake());
 			ps.setString(3, car.getModel());
