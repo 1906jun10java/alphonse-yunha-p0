@@ -6,7 +6,6 @@ import java.util.List;
 import com.revature.bean.Car;
 
 public interface LotDAO {
-	
 
 	public abstract List<Car> getCarList() 
 			throws SQLException;

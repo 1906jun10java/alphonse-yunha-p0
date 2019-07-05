@@ -46,7 +46,8 @@ public class CarDAOImpl implements CarDAO {
 		String sql = "SELECT CAR_ID, CAR_YEAR, CAR_MAKE, CAR_MODEL FROM LOT WHERE CAR_YEAR = '?' AND CAR_MAKE = '?' AND CAR_MODEL = '?'";
 
 		ResultSet rs = null;
-		try (Connection conn = ConnFactory.getConnection(); PreparedStatement ps = conn.prepareStatement(sql);) {
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql);) {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 
@@ -109,7 +110,8 @@ public class CarDAOImpl implements CarDAO {
 	public int addCarToLot(Car car) {
 		int addedCar = 0;
 		String sql = "INSERT INTO LOT(CAR_YEAR, CAR_MAKE, CAR_MODEL) VALUES(?,?,?)";
-		try (Connection conn = ConnFactory.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql)) {
 
 			ps.setInt(1, car.getYearManufactured());
 			ps.setString(2, car.getMake());
@@ -121,6 +123,21 @@ public class CarDAOImpl implements CarDAO {
 		}
 		return addedCar;
 
+	}
+
+	public void removeCarFromLot(Car car) {
+		String sql = "DELETE FROM LOT WHERE CAR_YEAR = '?' AND CAR_MAKE = '?' AND CAR_MODEL = '?'";
+		try(Connection conn = ConnFactory.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql)){
+
+			ps.setInt(1, car.getYearManufactured());
+			ps.setString(2, car.getMake());
+			ps.setString(3, car.getModel());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

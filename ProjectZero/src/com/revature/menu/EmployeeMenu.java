@@ -33,7 +33,8 @@ public class EmployeeMenu extends EmployeeFunctions{
 					 */
 					break;
 				case 2:
-					ef.removeCarFromLot(user);
+					ef.removeCarFromLot(car);
+					System.out.println("Removed Car from Database.");
 					/*
 					 * remove car using sql statement.
 					 * Depending on how to delete could be by IDS or Name of the car.
@@ -51,7 +52,7 @@ public class EmployeeMenu extends EmployeeFunctions{
 					break;
 				case 5:
 					try {
-						System.out.println(ef.getCarList());
+						ef.getCarList();
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

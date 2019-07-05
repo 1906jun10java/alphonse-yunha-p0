@@ -52,9 +52,4 @@ public class Car {
 		this.model = model;
 	}
 
-	@Override
-	public String toString() {
-		return "Car [carID=" + carID + ", yearManufactured=" + yearManufactured + ", make=" + make + ", model=" + model
-				+ "]";
-	}
 }

@@ -15,13 +15,14 @@ import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
 	protected Car car = new Car();
-	int yearManufactured = 0;
-	String carMake = " ";
-	String carModel = " ";
+	int yearManufactured;
+	String carMake;
+	String carModel;
 	CarDAO cd = new CarDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
-	public static Connection cf = ConnFactory.getConnection();
+	public static ConnFactory cf = ConnFactory.getInstance();
+	
 
 	public void addCarToLot(Car car) {
 		System.out.println("Enter year manufactured: ");
@@ -35,12 +36,34 @@ public class EmployeeFunctions {
 		carModel = sc.nextLine();
 
 		car = new Car(userId, yearManufactured, carMake, carModel);
-		cd.addCarToLot(car);
+		try {
+			cd.addCarToLot(car);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
-	public void removeCarFromLot(User user) {
-		System.out.println("Removed.");
+	public void removeCarFromLot(Car car) {
+		System.out.println("Enter year manufactured: ");
+		yearManufactured = sc.nextInt();
+
+		System.out.println("Enter car make: ");
+		carMake = sc.nextLine();
+		carMake = sc.nextLine();
+
+		System.out.println("Enter car model: ");
+		carModel = sc.nextLine();
+
+		car = new Car(userId, yearManufactured, carMake, carModel);
+		try {
+			cd.removeCarFromLot(car);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public void offerDecide(User user) {

@@ -1,11 +1,20 @@
 package com.revature.bean;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.bean.VariableCheck;
 public class CustomerFunctions {
+	EmployeeFunctions ef = new EmployeeFunctions();
+	
 	public void ViewCarLot() {
 		//displays list of available cars on lot 
     	//from the sql table
+		try {
+			ef.getCarList();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	System.out.println("1.car, 2.car, 3.car");
 	}
 	
