@@ -25,22 +25,22 @@ public class SignupFunctions {
     	
     	
     	
-    	Connection conn = ConnFactory.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM USERS;");//WHERE user_name = '"+newUser.getUserName()+"'
-		ResultSetMetaData rsmd = rs.getMetaData();
-		int columnsNumber = rsmd.getColumnCount();
-		String colName;
-		
-		
-		while (rs.next()) {
-			for (int i = 1; i <= columnsNumber; i++) {
-				colName = rsmd.getColumnName(i);
-				System.out.print(colName+" ["+rs.getString(i) + "] ");
-			}
-			System.out.println();
-			
-		}
+//    	Connection conn = ConnFactory.getConnection();
+//		Statement stmt = conn.createStatement();
+//		ResultSet rs = stmt.executeQuery("SELECT * FROM USERS;");//WHERE user_name = '"+newUser.getUserName()+"'
+//		ResultSetMetaData rsmd = rs.getMetaData();
+//		int columnsNumber = rsmd.getColumnCount();
+//		String colName;
+//		
+//		
+//		while (rs.next()) {
+//			for (int i = 1; i <= columnsNumber; i++) {
+//				colName = rsmd.getColumnName(i);
+//				System.out.print(colName+" ["+rs.getString(i) + "] ");
+//			}
+//			System.out.println();
+//			
+//		}
 		
     //	SELECT user_name FROM USERS WHERE user_name = 'ooo';
     	
