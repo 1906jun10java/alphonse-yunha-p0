@@ -1,5 +1,6 @@
 package com.revature.menu;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.bean.NewUser;
@@ -21,8 +22,9 @@ public class SignupMenu{
 				+ "\n3. confirm password "
 				+ "\n4. First name   "
 				+ "\n5. Last name   "
-				+ "\n6. Save & exit"
-				+ "\n7. Exit");
+				+ "\n6. Specify user as employee or customer"
+				+ "\n7. Save & exit"
+				+ "\n8. Exit");
 		while(newUser.getLoop() == true) {
 				
 				System.out.println(selectionMenu);
@@ -36,7 +38,12 @@ public class SignupMenu{
 				
 				switch (newUser.getMenuOption()) {
 		        case 1:
-		        	signin.User(newUser);
+		        	try {
+						signin.User(newUser);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 		            break;
 		        case 2:
 		        	signin.Password(newUser);
@@ -51,10 +58,15 @@ public class SignupMenu{
 		        	signin.LastName(newUser);
 		            break;
 		        case 6:
-		        	signin.LastName(newUser);
-		            break;
+		        	signin.userType(newUser);
+		        	break;
 		        case 7:
-		        	signin.Save(user, newUser);
+		        	try {
+						signin.Save(user, newUser);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 		            break;
 		        case 8:
 		        	signin.Exit(user, newUser);

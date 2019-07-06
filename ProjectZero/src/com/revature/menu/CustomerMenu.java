@@ -38,7 +38,8 @@ public class CustomerMenu{
 		        	customer.ViewMyCars();
 		            break;
 		        case 3:
-		        	customer.MakeAnOffer(variables);
+		        	customer.MakeAnOffer(user, customer, variables);
+		        	
 		        	break;
 		        case 4:
 		        	customer.ViewCarPaymentDetails();

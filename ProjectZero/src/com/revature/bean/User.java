@@ -6,6 +6,7 @@ public class User {
 	protected boolean employee;
 	protected boolean customer;
 	protected String travelTo ;
+	private int userId;
 	
 	
 	public String getUser() {
@@ -55,5 +56,13 @@ public class User {
 	 */
 	public void setTravelTo(String travelTo) {
 		this.travelTo = travelTo;
+	}
+	public int getUserId() {
+		
+		return userId;
+	}
+	public void setUserId(String string) {
+		int userIdInt = Integer.parseInt(string);
+		this.userId = userIdInt;
 	}
 }

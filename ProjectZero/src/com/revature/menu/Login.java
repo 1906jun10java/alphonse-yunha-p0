@@ -1,7 +1,9 @@
 package com.revature.menu;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.revature.bean.LoginFunctions;
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
 
@@ -11,6 +13,7 @@ public class  Login extends VariableCheck{
 	public User LoginPage() {
 		VariableCheck variables = new VariableCheck();
 		User user = new User();
+		LoginFunctions log = new LoginFunctions();
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
@@ -35,9 +38,13 @@ public class  Login extends VariableCheck{
 				switch (variables.getMenuOption()) {
 		        case 1:
 		        	System.out.print("User: ");
-		        	user.setUser(sc.next());
+		        //	user.setUser(sc.next());
+		        	user.setUser("yunha");
 		        	System.out.print("Password: ");
-		        	user.setPass(sc.next());
+		       // 	user.setPass(sc.next());
+		        	user.setPass("junjung");
+		        	
+		        	
 		            break;
 		        case 2:
 		        	user.setEmployee(true);
@@ -55,14 +62,26 @@ public class  Login extends VariableCheck{
 		        		//check the table of either employee or customer
 		        		//and compare the username and password
 		        		//then set loops to false
+		        		try {
+							if(log.checkLoginEmployee(user) == true) {
+								variables.setLoop(false);
+								if (user.getCustomer() == true ) {
+									user.setTravelTo("employee");
+									
+								}
+								if (user.getEmployee() == true ) {
+									user.setTravelTo("customer");
+								}
+								
+							}
+							else {
+								System.out.println("");
+							}
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 		        		
-		        		variables.setLoop(false);
-		        		if (user.getCustomer() == true ) {
-		        			user.setTravelTo("employee");
-		        		}
-		        		if (user.getEmployee() == true ) {
-		        			user.setTravelTo("customer");
-		        		}
 		        		
 		        		
 		        		

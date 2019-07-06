@@ -17,7 +17,8 @@ public class EmployeeMenu extends EmployeeFunctions{
 		while (variables.getLoop() == true) {
 
 			if (variables.getLogin() == false) {
-				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4. Show remaining payments \n5 View Cars in Lot\n6. Exit");
+				System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer "
+						+ "\n4. Show remaining payments \n5 View Cars in Lot\n6. Exit");
 				while (!sc.hasNextInt()) {
 					System.out.println("1. Add Car \n2. Remove Car \n3. Accept/Decline Offer \n4.Exit");
 					sc.next();

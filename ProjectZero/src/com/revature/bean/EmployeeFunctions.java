@@ -92,14 +92,29 @@ public class EmployeeFunctions {
 		ResultSet rs = stmt.executeQuery("SELECT * FROM LOT");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
 		Car s = null;
 		while (rs.next()) {
-			for (int i = 2; i <= columnsNumber; i++) {
-				System.out.print(rs.getString(i) + " ");
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
 			}
 			System.out.println();
 			carList.add(s);
 		}
 		return carList;
 	}
+	public void setOffer(int offer, User user, String carId) throws SQLException {
+		
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		stmt.executeQuery("INSERT INTO PENDINGOFFER(OFFER_ID, USER_ID, CAR_ID, OFFER_PRICE)"
+				+ "VALUES('"+user.getUserId()+" ', ' "+carId+" ' , '"+offer+"'");
+		
+		
+		
+		
+	}
+
 }

@@ -9,6 +9,8 @@ public class NewUser {
 	private boolean confirmPassword;
 	private String firstName;
 	private String LastName;
+	private boolean employee;
+	private boolean customer;
 
 	public boolean getLoop() {
 		return loop;
@@ -64,6 +66,22 @@ public class NewUser {
 
 	public void setLastName(String lastName) {
 		LastName = lastName;
+	}
+
+	public boolean getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(boolean employee) {
+		this.employee = employee;
+	}
+
+	public boolean getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(boolean customer) {
+		this.customer = customer;
 	}
 
 }

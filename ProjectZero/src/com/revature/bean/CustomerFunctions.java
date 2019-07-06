@@ -15,7 +15,7 @@ public class CustomerFunctions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	System.out.println("1.car, 2.car, 3.car");
+    	//System.out.println("1.car, 2.car, 3.car");
 	}
 	
 	public void ViewMyCars() {
@@ -25,41 +25,31 @@ public class CustomerFunctions {
     	System.out.println("You have no cars ");
 	}
 	
-	public Object MakeAnOffer(VariableCheck variables) {
-		String selectionMenu = (""
-				+ "1. View cars on lot "
-				+ "\n2. View my cars"
-				+ "\n3. Make an offer "
-				+ "\n4. View remaining payment foreach of your car(s)   "
-				+ "\n5. Exit");
-		@SuppressWarnings("resource")
+	public Object MakeAnOffer(User user, CustomerFunctions customer, VariableCheck variables) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Which car would you like to make an offer for?");
-    	//displays list of available cars on lot 
-    	//from the sql table
-    	System.out.println("1.car, 2.car, 3.car");
-    	while(!sc.hasNextInt()) {
-			System.out.println("Invalid input try again"+selectionMenu);
-			sc.next();
+		
+		
+		customer.ViewCarLot();
+		
+		
+		try {
+			System.out.println();
+			System.out.print("Select a CAR_ID for your offer... \nOffer:");
+			String carId = sc.next();
+			System.out.println("Make an offer for the car");
+			int offer = sc.nextInt();
+			ef.setOffer(offer, user, carId);
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(Exception e) {
+			System.out.println("you did not enter an integer, please remake an offer.");
 		}
-    	variables.setCarNumber(sc.nextInt());
-    	// 
-    	//use the get method below to figure if the car actually exists in the database 
-    	// if it does then display the car using sql below.
-    	
-    	//if(car exists) {
-    		System.out.println("making an offer for "+variables.getCarNumber());
-    		System.out.println("What would you like to offer: ");
-    		System.out.print("$");
-    		while(!sc.hasNextInt()) {
-				System.out.println("Invalid input try again"+selectionMenu);
-				sc.next();
-			}
-    		variables.setOffer(sc.nextInt());
-    		System.out.println("Thankyou, your offer will viewed by an employee shortly");
-    		//use the get method to input the offer to the database
-    //	}
-    	//else{System.out.println(that car does not exist);
+		
+	
+		
+		
+		
 			return variables;
     	//}
 	}
