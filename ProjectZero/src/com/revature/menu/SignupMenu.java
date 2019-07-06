@@ -17,14 +17,9 @@ public class SignupMenu{
 		newUser.setLoop(true);
 		//variables.setLogin(false);
 		String selectionMenu = (""
-				+ "1. Enter a new username(must be unique)"
-				+ "\n2. Enter a new password "
-				+ "\n3. confirm password "
-				+ "\n4. First name   "
-				+ "\n5. Last name   "
-				+ "\n6. Specify user as employee or customer"
-				+ "\n7. Save & exit"
-				+ "\n8. Exit");
+				+ "1. Enter a new username, password, name, userType"
+				+ "\n2. Save & exit"
+				+ "\n3. Exit");
 		while(newUser.getLoop() == true) {
 				
 				System.out.println(selectionMenu);
@@ -44,23 +39,20 @@ public class SignupMenu{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-		            break;
-		        case 2:
+
 		        	signin.Password(newUser);
-		            break;
-		        case 3:
+
 		        	signin.NewPassword(newUser);
-		        	break;
-		        case 4:
+
 		        	signin.FirstName(newUser);
-		            break;
-		        case 5:
+
 		        	signin.LastName(newUser);
-		            break;
-		        case 6:
+
 		        	signin.userType(newUser);
 		        	break;
-		        case 7:
+		        	
+		        	
+		        case 2:
 		        	try {
 						signin.Save(user, newUser);
 					} catch (SQLException e) {
@@ -68,7 +60,7 @@ public class SignupMenu{
 						e.printStackTrace();
 					}
 		            break;
-		        case 8:
+		        case 3:
 		        	signin.Exit(user, newUser);
 		            
 		        default: 

@@ -105,12 +105,12 @@ public class EmployeeFunctions {
 		}
 		return carList;
 	}
-	public void setOffer(int offer, User user, String carId) throws SQLException {
+	public void setOffer(int offer, User user, int carId) throws SQLException {
 		
-		Connection conn = ConnFactory.getConnection();
-		Statement stmt = conn.createStatement();
-		stmt.executeQuery("INSERT INTO PENDINGOFFER(OFFER_ID, USER_ID, CAR_ID, OFFER_PRICE)"
-				+ "VALUES('"+user.getUserId()+" ', ' "+carId+" ' , '"+offer+"'");
+		//Connection conn = ConnFactory.getConnection();
+		Connection stmt = ConnFactory.getConnection();
+		
+		((Statement) stmt).executeQuery("INSERT INTO PENDINGOFFER(USER_ID, CAR_ID, OFFER_PRICE) VALUES("+user.getUserId()+" ,  "+carId+"  , "+offer+");");
 		
 		
 		

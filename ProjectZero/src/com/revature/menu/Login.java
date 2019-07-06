@@ -43,7 +43,7 @@ public class  Login extends VariableCheck{
 		        	System.out.print("Password: ");
 		       // 	user.setPass(sc.next());
 		        	user.setPass("junjung");
-		        	
+		        	user.setUserId(5);
 		        	
 		            break;
 		        case 2:

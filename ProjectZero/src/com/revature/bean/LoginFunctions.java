@@ -23,7 +23,7 @@ public class LoginFunctions {
 			
 			if(user.getUser().equals(rs.getString(2)) && user.getPass().equals(rs.getString(3))) {
 				yes = 1;
-				user.setUserId(rs.getString(1));
+				user.setUserId(rs.getInt(1));
 			}
 		
 		}

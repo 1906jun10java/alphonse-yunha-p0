@@ -1,31 +1,40 @@
 package com.revature.bean;
 
 public class User {
-	protected String user;
-	protected String pass;
+	protected String userName;
+	protected String userPass;
 	protected boolean employee;
 	protected boolean customer;
 	protected String travelTo ;
 	private int userId;
 	
+	public User() {
+		super();
+	}
+	public User(int userId, String userName, String userPass) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPass = userPass;
+	}
 	
 	public String getUser() {
-		return user;
+		return userName;
 	}
 	public void setUser(String user) {
-		this.user = user;
+		this.userName = user;
 	}
 	/**
 	 * @return the pass
 	 */
 	public String getPass() {
-		return pass;
+		return userPass;
 	}
 	/**
 	 * @param pass the pass to set
 	 */
 	public void setPass(String pass) {
-		this.pass = pass;
+		this.userPass = pass;
 	}
 	/**
 	 * @return the employee
@@ -61,8 +70,8 @@ public class User {
 		
 		return userId;
 	}
-	public void setUserId(String string) {
-		int userIdInt = Integer.parseInt(string);
-		this.userId = userIdInt;
+	public void setUserId(int userId) {
+		
+		this.userId = userId;
 	}
 }

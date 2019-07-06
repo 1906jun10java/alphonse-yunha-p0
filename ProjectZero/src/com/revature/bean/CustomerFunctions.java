@@ -25,7 +25,7 @@ public class CustomerFunctions {
     	System.out.println("You have no cars ");
 	}
 	
-	public Object MakeAnOffer(User user, CustomerFunctions customer, VariableCheck variables) {
+	public void MakeAnOffer(User user, CustomerFunctions customer, VariableCheck variables) {
 		Scanner sc = new Scanner(System.in);
 		
 		
@@ -35,10 +35,12 @@ public class CustomerFunctions {
 		try {
 			System.out.println();
 			System.out.print("Select a CAR_ID for your offer... \nOffer:");
-			String carId = sc.next();
+			int carId = sc.nextInt();
 			System.out.println("Make an offer for the car");
 			int offer = sc.nextInt();
 			ef.setOffer(offer, user, carId);
+			
+			
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +52,7 @@ public class CustomerFunctions {
 		
 		
 		
-			return variables;
+			
     	//}
 	}
 	
