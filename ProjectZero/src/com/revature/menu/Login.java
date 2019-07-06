@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.revature.bean.LoginFunctions;
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
+import com.revature.dao.UserDAOImpl;
 
 public class  Login extends VariableCheck{
 
@@ -18,6 +19,8 @@ public class  Login extends VariableCheck{
 		Scanner sc = new Scanner(System.in);
 		variables.setLoop(true);
 		variables.setLogin(false);
+		String userName = "";
+		String userPass = "";
 		String selectionMenu = "1. Username & Password"
 							+ "\n2. employee "
 							+ "\n3. customer   "
@@ -37,13 +40,17 @@ public class  Login extends VariableCheck{
 				
 				switch (variables.getMenuOption()) {
 		        case 1:
-		        	System.out.print("User: ");
-		        //	user.setUser(sc.next());
-		        	user.setUser("yunha");
-		        	System.out.print("Password: ");
-		       // 	user.setPass(sc.next());
-		        	user.setPass("junjung");
-		        	user.setUserId(5);
+		        	System.out.println("Enter Username: ");
+		        	userName = sc.nextLine();
+		        	userName = sc.nextLine();
+		        	System.out.println("Enter Password: ");
+		        	userPass = sc.nextLine();
+		        	
+		        	if(UserDAOImpl.loginConfirm(userName, userPass) == true) {
+		        		System.out.println("Login successful!");
+		        	}else {
+		        		System.out.println("Login not successful.");
+		        	}
 		        	
 		            break;
 		        case 2:
@@ -108,7 +115,7 @@ public class  Login extends VariableCheck{
 		        	System.out.println("something went wrong."
 		        			+ " please enter your selected options correctly");
 		    }
-				System.out.println("Username: "+user.getUser()+" Password: "+user.getPass()+
+				System.out.println("Username: "+ user.getUser()+" Password: "+user.getPass()+
 						"\nEmployee: "+user.getEmployee()+" Custmer: "+user.getCustomer()+
 						"\nMenu: "+variables.getMenuOption());
 		//	}

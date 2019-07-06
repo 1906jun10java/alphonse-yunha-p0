@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 			while(rs.next()) {
 				User u = new User();
 				String userName = rs.getString("USER_NAME");
-				u.setUserName(userName);
+				u.setUser(userName);
 				
 				String userPass = rs.getString("USER_PASS");
 				u.setPass(userPass);
@@ -102,8 +102,8 @@ public class UserDAOImpl implements UserDAO {
 		String sql = "INSERT INTO USERS(USER_NAME, USER_PASS) VALUES (?,?)";
 		try(Connection conn = ConnFactory.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)){
-			ps.setString(1, user.getUserName());
-			ps.setString(2, user.getUserPass());
+			ps.setString(1, user.getUser());
+			ps.setString(2, user.getPass());
 			usersCreated = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -116,6 +116,36 @@ public class UserDAOImpl implements UserDAO {
 	public int userType(User user) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public static boolean loginConfirm(String userName, String userPass) {
+		List<User> userList = new ArrayList<>();
+		try(Connection conn = ConnFactory.getConnection();){
+			String sql = "SELECT * FROM USERS";
+			Statement stmt= conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				User temp = new User();
+				temp.setUserId(rs.getInt(1));
+				temp.setUser(rs.getString(2));
+				temp.setPass(rs.getString(3));
+				userList.add(temp);
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Error occured, Returning to login menu");
+			e.printStackTrace();
+		}
+		for(User u : userList ) {
+			if(u.getUser().equals(userName) && u.getPass().equals(userPass)) {
+				return true;
+			}
+		}
+		
+		return false;
+		
 	}
 
 
