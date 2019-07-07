@@ -88,6 +88,8 @@ public class EmployeeFunctions {
 				int accept = sc.nextInt();
 				retreiveCarUserAmount(user, accept);
 				acceptOffer(user.getCar_id(), user.getUser_id(), user.getOffer_price());
+				rejectOffer(accept);
+				
 			}
 			else {
 				System.out.println("That was not one of the options");
@@ -157,6 +159,7 @@ public class EmployeeFunctions {
 	public void rejectOffer(int offer_id) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 
+
 		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -216,6 +219,13 @@ public class EmployeeFunctions {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
 		}		
+	}
+
+
+
+	public void removeCar() {
+		userDao.removeCarFromLot();
+		
 	}
 
 	public List<Offer> getOfferList() throws SQLException {
