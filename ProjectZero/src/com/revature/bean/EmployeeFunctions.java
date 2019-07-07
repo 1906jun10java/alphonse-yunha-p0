@@ -9,14 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
-
 import com.revature.dao.UserDAOImpl;
-
-
-
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -135,7 +130,7 @@ public class EmployeeFunctions {
 
 	public void setOffer(int offer, User user, int carId) throws SQLException  {
 		
-		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?)";
+		String sql = "INSERT INTO PENDINGOFFER (userId, carId, offerPrice) VALUES(?,?,?)";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -154,7 +149,7 @@ public class EmployeeFunctions {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 
 
-		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
+		String sql = "DELETE FROM PENDINGOFFER WHERE offerId = ?";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -171,7 +166,7 @@ public class EmployeeFunctions {
 	public void acceptOffer(int car_id, int user_id, int amount_owe) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
-		String sql = "INSERT INTO OWNED (CAR_ID, USER_ID, owned_amount_left) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO OWNED (carId, userId, offerPrice) VALUES (?, ?, ?)";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -190,15 +185,15 @@ public class EmployeeFunctions {
 	public void retreiveCarUserAmount(User user, int offerId) {
 
 		try(Connection conn = ConnFactory.getConnection();){
-			String sql = "SELECT CAR_ID, USER_ID, OFFER_PRICE FROM PENDINGOFFER";
+			String sql = "SELECT carId, userId, offerPrice FROM PENDINGOFFER";
 			Statement stmt= conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				int offer_id = rs.getInt("OFFER_ID");
-				int car_id = rs.getInt("CAR_ID");
-				int user_id = rs.getInt("USER_ID");
-				int offer_price = rs.getInt("OFFER_PRICE");
+				int offer_id = rs.getInt("offerId");
+				int car_id = rs.getInt("carId");
+				int user_id = rs.getInt("userId");
+				int offer_price = rs.getInt("offerPrice");
 				if(offer_id==offerId) {
 					user.setCar_id(car_id);
 					user.setUser_id(user_id);
