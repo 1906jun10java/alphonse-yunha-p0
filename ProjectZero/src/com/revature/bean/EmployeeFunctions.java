@@ -7,15 +7,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
-import com.revature.dao.OfferDAO;
-import com.revature.dao.OfferDAOImpl;
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -24,7 +20,6 @@ public class EmployeeFunctions {
 	String carMake;
 	String carModel;
 	CarDAO cd = new CarDAOImpl();
-	OfferDAO od = new OfferDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
 	public static ConnFactory cf = ConnFactory.getInstance();
