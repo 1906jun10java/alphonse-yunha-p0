@@ -7,8 +7,9 @@ public class Offer{
 	private int car_Id;
 	private double offer_price;
 
-public Offer(int userId, int car_Id, double offer_price) {
+public Offer(int offer_id, int userId, int car_Id, double offer_price) {
 	super();
+	this.offer_id = offer_id;
 	this.userId = userId;
 	this.car_Id = car_Id;
 	this.offer_price = offer_price;
