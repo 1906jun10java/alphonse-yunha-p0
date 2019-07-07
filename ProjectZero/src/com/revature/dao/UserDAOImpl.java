@@ -147,6 +147,33 @@ public class UserDAOImpl implements UserDAO {
 		return false;
 		
 	}
+	public void retreiveUserId(User user) {
+
+		try(Connection conn = ConnFactory.getConnection();){
+			String sql = "SELECT USER_ID, USER_NAME FROM USERS";
+			Statement stmt= conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				String user_name = rs.getString("USER_NAME");
+				int user_id = rs.getInt("USER_ID");
+				if(user_name.equals(user.getUser())) {
+					user.setUserId(user_id);
+				}
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Error occured, Returning to login menu");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
 
 
 }

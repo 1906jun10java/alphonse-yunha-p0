@@ -7,6 +7,8 @@ public class User {
 	protected boolean customer;
 	protected String travelTo ;
 	private int userId;
+	private String empCust;
+
 	
 	public User() {
 		super();
@@ -74,4 +76,13 @@ public class User {
 		
 		this.userId = userId;
 	}
+	public void setType(String empCust) {
+		this.empCust = empCust;
+		
+	}
+	public String getType() {
+		return empCust;
+		
+	}
+
 }

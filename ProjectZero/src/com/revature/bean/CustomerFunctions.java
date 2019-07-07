@@ -3,9 +3,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.bean.VariableCheck;
+import com.revature.dao.UserDAOImpl;
 public class CustomerFunctions {
 	EmployeeFunctions ef = new EmployeeFunctions();
-	
+	UserDAOImpl userDao = new UserDAOImpl();
 	public void ViewCarLot() {
 		//displays list of available cars on lot 
     	//from the sql table
@@ -28,9 +29,10 @@ public class CustomerFunctions {
 	public void MakeAnOffer(User user, CustomerFunctions customer, VariableCheck variables) {
 		Scanner sc = new Scanner(System.in);
 		
-		
+		//INSERT INTO "JUNGYUNHA"."OWNED" (CAR_ID, USER_ID, OWNED_AMOUNT_LEFT) VALUES ('23', '5', '600')
+
 		customer.ViewCarLot();
-		
+		userDao.retreiveUserId(user);
 		
 		try {
 			System.out.println();
@@ -38,16 +40,14 @@ public class CustomerFunctions {
 			int carId = sc.nextInt();
 			System.out.println("Make an offer for the car");
 			int offer = sc.nextInt();
+			
 			ef.setOffer(offer, user, carId);
 			
 			
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}catch(Exception e) {
-			System.out.println("you did not enter an integer, please remake an offer.");
 		}
-		
 	
 		
 		

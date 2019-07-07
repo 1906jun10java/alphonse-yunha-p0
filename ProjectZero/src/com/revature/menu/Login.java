@@ -11,7 +11,10 @@ import com.revature.dao.UserDAOImpl;
 public class  Login extends VariableCheck{
 
 
+	
+
 	public User LoginPage() {
+		boolean success = false;
 		VariableCheck variables = new VariableCheck();
 		User user = new User();
 		LoginFunctions log = new LoginFunctions();
@@ -21,11 +24,9 @@ public class  Login extends VariableCheck{
 		variables.setLogin(false);
 		String userName = "";
 		String userPass = "";
-		String selectionMenu = "1. Username & Password"
-							+ "\n2. employee "
-							+ "\n3. customer   "
-							+ "\n4. to enter"
-							+ "\n5. to signup";
+		String selectionMenu = "1. Enter login credentials"
+							+ "\n2. Login"
+							+ "\n3. signup";
 		while(variables.getLoop() == true) {
 			
 			//if(variables.getLogin() == false) {
@@ -45,31 +46,52 @@ public class  Login extends VariableCheck{
 		        	userName = sc.nextLine();
 		        	System.out.println("Enter Password: ");
 		        	userPass = sc.nextLine();
+		        	user.setUser(userName);
+		        	user.setPass(userPass);
+		        	System.out.println("Are you a customer(1) or an employee(2)");
+		        	while(!sc.hasNextInt()) {
+						System.out.println("Invalid input try again \n"+selectionMenu);
+						sc.next();
+					}
+		        	int empCust = sc.nextInt();
+		        	if(empCust == 2)
+		        	{
+		        		user.setEmployee(true);
+			        	user.setCustomer(false);
+			        	System.out.println("you are an employee");
+			        
+		        	}
+		        	if(empCust == 1) {
+		        		user.setEmployee(false);
+			        	user.setCustomer(true);
+			        	System.out.println("you are a customer");
+			           
+		        	}
+		        	else {
+		        		System.out.println("That was not one of the options");
+		        	}
 		        	
-		        	if(UserDAOImpl.loginConfirm(userName, userPass) == true) {
+		        	
+		        	
+		        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
 		        		System.out.println("Login successful!");
-		        	}else {
+		        		success = true;
+		        	}
+		        	else {
 		        		System.out.println("Login not successful.");
 		        	}
 		        	
+		        	
 		            break;
+		     
 		        case 2:
-		        	user.setEmployee(true);
-		        	user.setCustomer(false);
-		        	System.out.println("you are an employee");
-		            break;
-		        case 3:
-		        	user.setEmployee(false);
-		        	user.setCustomer(true);
-		        	System.out.println("you are a customer");
-		            break;
-		        case 4:
 		        	System.out.print("Enter");
-		        	if((user.getEmployee() == true || user.getCustomer() == true) && user.getUser() != null && user.getPass() != null) {
+		        	if((user.getEmployee() == true || user.getCustomer() == true) && user.getUser() != null && user.getPass() != null && success ==true) {
 		        		//check the table of either employee or customer
 		        		//and compare the username and password
 		        		//then set loops to false
 		        		try {
+		        			
 							if(log.checkLoginEmployee(user) == true) {
 								variables.setLoop(false);
 								if (user.getCustomer() == true ) {
@@ -84,6 +106,9 @@ public class  Login extends VariableCheck{
 							else {
 								System.out.println("");
 							}
+							
+							
+							
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -98,7 +123,7 @@ public class  Login extends VariableCheck{
 		        	
 		            break;
 		            
-		        case 5:
+		        case 3:
 		        	user.setTravelTo("signup");
 		        	variables.setLoop(false);
 		        	user.setCustomer(false);

@@ -1,6 +1,7 @@
 package com.revature.bean;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -105,16 +106,25 @@ public class EmployeeFunctions {
 		}
 		return carList;
 	}
-	public void setOffer(int offer, User user, int carId) throws SQLException {
+
+	public void setOffer(int offer, User user, int carId) throws SQLException  {
 		
-		//Connection conn = ConnFactory.getConnection();
-		Connection stmt = ConnFactory.getConnection();
+		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?)";
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, user.getUserId());
+			ps.setInt(2, carId);
+			ps.setInt(3, offer);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		((Statement) stmt).executeQuery("INSERT INTO PENDINGOFFER(USER_ID, CAR_ID, OFFER_PRICE) VALUES("+user.getUserId()+" ,  "+carId+"  , "+offer+");");
-		
-		
-		
-		
+
 	}
+	
+	
 
 }
