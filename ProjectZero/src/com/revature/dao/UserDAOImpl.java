@@ -166,6 +166,7 @@ public class UserDAOImpl implements UserDAO {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 	}
 	public void removeCarFromLot() {
 		Scanner scanner = new Scanner(System.in);
@@ -182,6 +183,11 @@ public class UserDAOImpl implements UserDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+=======
+				
+		}
+		
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 		
 	}
 		
@@ -189,5 +195,3 @@ public class UserDAOImpl implements UserDAO {
 
 	
 
-
-}

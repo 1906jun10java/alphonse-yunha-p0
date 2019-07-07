@@ -11,6 +11,7 @@ public class User {
 	private int car_id;
 	private int user_id;
 	private int offer_price;
+	private int offer_id;
 	
 	public User() {
 		super();
@@ -103,6 +104,12 @@ public class User {
 	}
 	public void setOffer_price(int offer_price) {
 		this.offer_price = offer_price;
+	}
+	public int getOffer_id() {
+		return offer_id;
+	}
+	public void setOffer_id(int offer_id) {
+		this.offer_id = offer_id;
 	}
 
 }

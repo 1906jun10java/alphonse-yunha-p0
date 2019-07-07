@@ -7,12 +7,19 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
+<<<<<<< HEAD
 import com.revature.dao.UserDAOImpl;
+=======
+import com.revature.dao.OfferDAO;
+import com.revature.dao.OfferDAOImpl;
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -22,6 +29,7 @@ public class EmployeeFunctions {
 	String carModel;
 	UserDAOImpl userDao = new UserDAOImpl();
 	CarDAO cd = new CarDAOImpl();
+	OfferDAO od = new OfferDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
 	public static ConnFactory cf = ConnFactory.getInstance();
@@ -47,8 +55,35 @@ public class EmployeeFunctions {
 		}
 
 	}
+<<<<<<< HEAD
 
 	
+=======
+	
+	public void viewOffer(Offer o) {
+		viewOffer(o);
+	}
+	public void removeCarFromLot(Car car) {
+		System.out.println("Enter year manufactured: ");
+		yearManufactured = sc.nextInt();
+
+		System.out.println("Enter car make: ");
+		carMake = sc.nextLine();
+		carMake = sc.nextLine();
+
+		System.out.println("Enter car model: ");
+		carModel = sc.nextLine();
+
+		car = new Car(userId, yearManufactured, carMake, carModel);
+		try {
+			cd.removeCarFromLot(car);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 
 	public void offerDecide(User user) {
 		Scanner scanner = new Scanner(System.in);
@@ -192,12 +227,9 @@ public class EmployeeFunctions {
 		} catch (SQLException e) {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
-		}
-		
-		
-		
-		
+		}		
 	}
+<<<<<<< HEAD
 
 
 
@@ -214,5 +246,27 @@ public class EmployeeFunctions {
 
 	
 	
+=======
+	public List<Offer> getOfferList() throws SQLException {
+		List<Offer> offerList = new ArrayList<Offer>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM PENDINGOFFER");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Offer s = null;
+		while (rs.next()) {
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			offerList.add(s);
+		}
+		return offerList;	
+	}
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 
 }

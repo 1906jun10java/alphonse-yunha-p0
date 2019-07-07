@@ -12,5 +12,4 @@ public interface UserDAO {
 	public User getUserById(String id, Connection conn);
 	public int createUser(User user);
 	public int userType(User user);
-
 }
