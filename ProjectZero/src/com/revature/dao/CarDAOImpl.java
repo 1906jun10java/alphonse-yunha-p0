@@ -43,7 +43,7 @@ public class CarDAOImpl implements CarDAO {
 
 	public Car getCarById(String id) {
 		Car c = null;
-		String sql = "SELECT CAR_ID, CAR_YEAR, CAR_MAKE, CAR_MODEL FROM LOT WHERE CAR_YEAR = '?' AND CAR_MAKE = '?' AND CAR_MODEL = '?'";
+		String sql = "SELECT CAR_ID, CAR_YEAR, CAR_MAKE, CAR_MODEL FROM LOT WHERE CAR_YEAR = '?' AND CAR_MAKE = '?' AND CAR_MODEL = '?' AND CAR_OWNER_STATE = '?'";
 
 		ResultSet rs = null;
 		try (Connection conn = ConnFactory.getConnection(); 
@@ -56,6 +56,7 @@ public class CarDAOImpl implements CarDAO {
 				int carYear = rs.getInt("CAR_YEAR");
 				String carMake = rs.getString("Car_MAKE");
 				String carModel = rs.getString("Car_Model");
+
 
 				c = new Car(carID, carYear, carMake, carModel);
 			}

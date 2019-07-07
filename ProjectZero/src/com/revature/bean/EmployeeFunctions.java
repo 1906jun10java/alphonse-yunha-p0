@@ -218,23 +218,6 @@ public class EmployeeFunctions {
 		}		
 	}
 
-
-
-
-	public void removeCar() {
-		userDao.removeCarFromLot();
-		
-	}
-
-
-
-	
-
-
-
-	
-	
-
 	public List<Offer> getOfferList() throws SQLException {
 		List<Offer> offerList = new ArrayList<Offer>();
 		Connection conn = ConnFactory.getConnection();

@@ -173,7 +173,7 @@ public class UserDAOImpl implements UserDAO {
 		int remove = scanner.nextInt();
 		CustomerFunctions customer = new CustomerFunctions();
 		customer.ViewCarLot();
-		int usersCreated = 0;
+		int usersCreated = 1;
 		String sql = "DELETE FROM LOT WHERE CAR_ID = ? ;";
 		try(Connection conn = ConnFactory.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql)){
