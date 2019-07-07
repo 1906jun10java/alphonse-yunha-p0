@@ -7,11 +7,15 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
+import com.revature.dao.OfferDAO;
+import com.revature.dao.OfferDAOImpl;
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -20,6 +24,7 @@ public class EmployeeFunctions {
 	String carMake;
 	String carModel;
 	CarDAO cd = new CarDAOImpl();
+	OfferDAO od = new OfferDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
 	public static ConnFactory cf = ConnFactory.getInstance();
@@ -45,7 +50,10 @@ public class EmployeeFunctions {
 		}
 
 	}
-
+	
+	public void viewOffer(Offer o) {
+		viewOffer(o);
+	}
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter year manufactured: ");
 		yearManufactured = sc.nextInt();
@@ -209,14 +217,27 @@ public class EmployeeFunctions {
 		} catch (SQLException e) {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
-		}
-		
-		
-		
-		
+		}		
 	}
-
-	
-	
+	public List<Offer> getOfferList() throws SQLException {
+		List<Offer> offerList = new ArrayList<Offer>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM PENDINGOFFER");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Offer s = null;
+		while (rs.next()) {
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			offerList.add(s);
+		}
+		return offerList;	
+	}
 
 }

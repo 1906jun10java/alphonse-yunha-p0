@@ -169,11 +169,9 @@ public class UserDAOImpl implements UserDAO {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
 		}
-		
-		
+				
+		}
 		
 		
 	}
 
-
-}

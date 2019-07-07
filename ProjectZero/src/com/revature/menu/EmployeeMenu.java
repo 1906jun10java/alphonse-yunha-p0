@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
+import com.revature.dao.OfferDAO;
+import com.revature.dao.OfferDAOImpl;
 import com.revature.bean.*;
 
 public class EmployeeMenu extends EmployeeFunctions{
@@ -43,6 +45,12 @@ public class EmployeeMenu extends EmployeeFunctions{
 					 */
 					break;
 				case 3:
+					try {
+						ef.getOfferList();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					ef.offerDecide(user);
 					/*
 					 * add another menu to show offers and to accept or decline them. 
