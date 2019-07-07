@@ -12,8 +12,6 @@ public class User {
 	private int user_id;
 	private int offer_price;
 	private int offer_id;
-	private int owned_id;
-	private int owned_amount_left;
 	
 	public User() {
 		super();

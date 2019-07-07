@@ -10,8 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.revature.dao.CarDAO;
+<<<<<<< HEAD
 import com.revature.dao.CarDAOImpl;
 import com.revature.dao.UserDAOImpl;
+=======
+import com.revature.dao.CarDAOImpl;
+import com.revature.bean.Offer;
+import com.revature.dao.*;
+import com.revature.dao.UserDAOImpl;
+
+
+
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -51,7 +61,10 @@ public class EmployeeFunctions {
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter CarID:  ");
 		carId = sc.nextInt();
+<<<<<<< HEAD
 		car.setCarID(carId);
+=======
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 		car = new Car(carId, yearManufactured, carMake, carModel);
 		try {
 			cd.removeCarFromLot(car);
@@ -59,9 +72,7 @@ public class EmployeeFunctions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
+		}
 	public void offerDecide(User user) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("would you like to reject(1) or accept(2) an offer");
@@ -230,6 +241,27 @@ public class EmployeeFunctions {
 			offerList.add(s);
 		}
 		return offerList;	
-	}	
+	}
+	
+	public List<Owned> getOwnedList() throws SQLException{
+		List<Owned> ownedList = new ArrayList<Owned>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Owned s = null;
+		while (rs.next()) {
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			ownedList.add(s);
+		}
+		return ownedList;	
+	}
 
 }
