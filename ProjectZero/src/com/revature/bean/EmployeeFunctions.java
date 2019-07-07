@@ -198,6 +198,7 @@ public class EmployeeFunctions {
 					user.setCar_id(car_id);
 					user.setUser_id(user_id);
 					user.setOffer_price(offer_price);
+					
 				}
 				
 				
