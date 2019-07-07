@@ -12,7 +12,14 @@ public class User {
 	private int user_id;
 	private int offer_price;
 	private int offer_id;
+	private int owned_amount_left;
 	
+	public int getOwned_amount_left() {
+		return owned_amount_left;
+	}
+	public void setOwned_amount_left(int owned_amount_left) {
+		this.owned_amount_left = owned_amount_left;
+	}
 	public User() {
 		super();
 	}

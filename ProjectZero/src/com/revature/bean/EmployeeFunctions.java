@@ -79,7 +79,7 @@ public class EmployeeFunctions {
 				System.out.println("Which Offer_id do you wish to accept");
 				int accept = sc.nextInt();
 				retreiveCarUserAmount(user, accept);
-				acceptOffer(user.getCar_id(), user.getUser_id(), user.getOffer_price());
+				acceptOffer(user.getOffer_id(), user.getCar_id(), user.getUser_id(), user.getOffer_price());
 				rejectOffer(accept);
 				
 			}
@@ -166,29 +166,30 @@ public class EmployeeFunctions {
 		
 		
 	}
-	public void acceptOffer(int car_id, int user_id, int amount_owe) throws SQLException  {
+	public void acceptOffer(int owned_id, int car_id, int user_id, int owned_amount_left) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
-		String sql = "INSERT INTO OWNED (carId, userId, offerPrice) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO OWNED (OWNED_ID, CAR_ID, USER_ID, owned_amount_left) VALUES(? ,?, ?, ?)";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
-			ps.setInt(1, car_id);
-			ps.setInt(2, user_id);
-			ps.setInt(3, amount_owe);
-			
+			owned_id++;
+			ps.setInt(1, owned_id);
+			ps.setInt(2, car_id);
+			ps.setInt(3, user_id);
+			ps.setInt(4, owned_amount_left);
 			ps.executeUpdate();
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 	public void retreiveCarUserAmount(User user, int offerId) {
 
 		try(Connection conn = ConnFactory.getConnection();){
-			String sql = "SELECT carId, userId, offerPrice FROM PENDINGOFFER";
+			String sql = "SELECT * FROM PENDINGOFFER";
 			Statement stmt= conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
