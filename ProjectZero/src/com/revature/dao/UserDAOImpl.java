@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import com.revature.bean.CustomerFunctions;
 import com.revature.bean.User;
 import com.revature.util.ConnFactory;
 
@@ -153,25 +155,43 @@ public class UserDAOImpl implements UserDAO {
 			String sql = "SELECT USER_ID, USER_NAME FROM USERS";
 			Statement stmt= conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
 			while(rs.next()) {
 				String user_name = rs.getString("USER_NAME");
 				int user_id = rs.getInt("USER_ID");
 				if(user_name.equals(user.getUser())) {
 					user.setUserId(user_id);
-				}
-				
-				
-			}
-			
-			
+				}	
+			}	
 		} catch (SQLException e) {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
 		}
+
+	}
+	public void removeCarFromLot() {
+		Scanner scanner = new Scanner(System.in);
+		int remove = scanner.nextInt();
+		CustomerFunctions customer = new CustomerFunctions();
+		customer.ViewCarLot();
+		int usersCreated = 0;
+		String sql = "DELETE FROM LOT WHERE CAR_ID = ? ;";
+		try(Connection conn = ConnFactory.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql)){
+			ps.setInt(1, remove);
+			usersCreated = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 				
 		}
 		
+
 		
 	}
+		
+		
+
+	
 

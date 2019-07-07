@@ -12,6 +12,11 @@ import java.util.Scanner;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
+
+import com.revature.dao.UserDAOImpl;
+
+
+
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -19,6 +24,7 @@ public class EmployeeFunctions {
 	int yearManufactured;
 	String carMake;
 	String carModel;
+	UserDAOImpl userDao = new UserDAOImpl();
 	CarDAO cd = new CarDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
@@ -45,6 +51,7 @@ public class EmployeeFunctions {
 		}
 
 	}
+
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter year manufactured: ");
 		yearManufactured = sc.nextInt();
@@ -132,7 +139,7 @@ public class EmployeeFunctions {
 
 	public void setOffer(int offer, User user, int carId) throws SQLException  {
 		
-		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?);";
+		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?)";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -150,7 +157,7 @@ public class EmployeeFunctions {
 	public void rejectOffer(int offer_id) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 
-		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;";
+		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -210,6 +217,24 @@ public class EmployeeFunctions {
 			e.printStackTrace();
 		}		
 	}
+
+
+
+
+	public void removeCar() {
+		userDao.removeCarFromLot();
+		
+	}
+
+
+
+	
+
+
+
+	
+	
+
 	public List<Offer> getOfferList() throws SQLException {
 		List<Offer> offerList = new ArrayList<Offer>();
 		Connection conn = ConnFactory.getConnection();
