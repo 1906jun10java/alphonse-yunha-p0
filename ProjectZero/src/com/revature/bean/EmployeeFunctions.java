@@ -68,6 +68,28 @@ public class EmployeeFunctions {
 	}
 
 	public void offerDecide(User user) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("would you like to reject(1) or accept(2) an offer");
+		try {
+			int decide = sc.nextInt();
+			if(decide == 1) {
+				System.out.println("Which Offer_id do you wish to reject");
+				int reject = sc.nextInt();
+				rejectOffer(reject);
+			}
+			else if (decide == 2) {
+				System.out.println("Which Offer_id do you wish to accept");
+				int accept = sc.nextInt();
+				retreiveCarUserAmount(user, accept);
+				acceptOffer(user.getCar_id(), user.getUser_id(), user.getOffer_price());
+			}
+			else {
+				System.out.println("That was not one of the options");
+			}
+		}catch(Exception e) {
+			
+		}
+		
 		System.out.println("Accept/Decline");
 	}
 
@@ -126,6 +148,74 @@ public class EmployeeFunctions {
 		
 
 	}
+	public void rejectOffer(int offer_id) throws SQLException  {
+		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
+
+		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;";
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, offer_id);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public void acceptOffer(int car_id, int user_id, int amount_owe) throws SQLException  {
+		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
+		
+		String sql = "INSERT INTO OWNED (CAR_ID, USER_ID, owned_amount_left) VALUES (?, ?, ?);";
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, car_id);
+			ps.setInt(2, user_id);
+			ps.setInt(3, amount_owe);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public void retreiveCarUserAmount(User user, int offerId) {
+
+		try(Connection conn = ConnFactory.getConnection();){
+			String sql = "SELECT CAR_ID, USER_ID, OFFER_PRICE FROM PENDINGOFFER";
+			Statement stmt= conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				int offer_id = rs.getInt("OFFER_ID");
+				int car_id = rs.getInt("CAR_ID");
+				int user_id = rs.getInt("USER_ID");
+				int offer_price = rs.getInt("OFFER_PRICE");
+				if(offer_id==offerId) {
+					user.setCar_id(car_id);
+					user.setUser_id(user_id);
+					user.setOffer_price(offer_price);
+				}
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Error occured, Returning to login menu");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+
 	
 	
 
