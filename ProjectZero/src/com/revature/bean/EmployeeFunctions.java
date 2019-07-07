@@ -160,8 +160,7 @@ public class EmployeeFunctions {
 	}
 	public void rejectOffer(int offer_id) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
-
-		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;";
+		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -230,14 +229,6 @@ public class EmployeeFunctions {
 		
 	}
 
-
-
-	
-
-
-
-	
-	
 
 	public List<Offer> getOfferList() throws SQLException {
 		List<Offer> offerList = new ArrayList<Offer>();
