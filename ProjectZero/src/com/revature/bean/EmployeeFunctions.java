@@ -56,7 +56,7 @@ public class EmployeeFunctions {
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter CarID:  ");
 		carId = sc.nextInt();
-		
+		car.setCarID(carId);
 		car = new Car(carId, yearManufactured, carMake, carModel);
 		try {
 			cd.removeCarFromLot(car);
