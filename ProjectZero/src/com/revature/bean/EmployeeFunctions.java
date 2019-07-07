@@ -88,6 +88,8 @@ public class EmployeeFunctions {
 				int accept = sc.nextInt();
 				retreiveCarUserAmount(user, accept);
 				acceptOffer(user.getCar_id(), user.getUser_id(), user.getOffer_price());
+				rejectOffer(accept);
+				
 			}
 			else {
 				System.out.println("That was not one of the options");
