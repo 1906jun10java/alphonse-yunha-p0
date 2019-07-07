@@ -6,6 +6,10 @@ public class Offer{
 	private int userId;
 	private int car_Id;
 	private double offer_price;
+	
+	public Offer() {
+		super();
+	}
 
 public Offer(int offer_id, int userId, int car_Id, double offer_price) {
 	super();

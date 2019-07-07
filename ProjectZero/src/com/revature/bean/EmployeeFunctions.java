@@ -12,7 +12,8 @@ import java.util.Scanner;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
-
+import com.revature.bean.Offer;
+import com.revature.dao.*;
 import com.revature.dao.UserDAOImpl;
 
 
@@ -56,7 +57,6 @@ public class EmployeeFunctions {
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter CarID:  ");
 		carId = sc.nextInt();
-		
 		car = new Car(carId, yearManufactured, carMake, carModel);
 		try {
 			cd.removeCarFromLot(car);
@@ -64,9 +64,7 @@ public class EmployeeFunctions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
+		}
 	public void offerDecide(User user) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("would you like to reject(1) or accept(2) an offer");

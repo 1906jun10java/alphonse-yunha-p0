@@ -64,7 +64,7 @@ public class SignupFunctions {
     	System.out.println();
 	}
 	public void userType(NewUser newUser) {
-		
+		String secret = null;
 		Scanner sc = new Scanner(System.in);
 		
     	System.out.println("Are you an employee(1) or customer(2)");
