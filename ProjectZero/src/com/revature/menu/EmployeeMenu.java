@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 import com.revature.bean.User;
 import com.revature.bean.VariableCheck;
-import com.revature.dao.OfferDAO;
-import com.revature.dao.OfferDAOImpl;
 import com.revature.bean.*;
 
 public class EmployeeMenu extends EmployeeFunctions{

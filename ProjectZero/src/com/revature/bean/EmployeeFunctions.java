@@ -7,18 +7,19 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
+<<<<<<< HEAD
 <<<<<<< HEAD
 import com.revature.dao.UserDAOImpl;
 =======
 import com.revature.dao.OfferDAO;
 import com.revature.dao.OfferDAOImpl;
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
+=======
 >>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 import com.revature.util.ConnFactory;
 
@@ -29,7 +30,6 @@ public class EmployeeFunctions {
 	String carModel;
 	UserDAOImpl userDao = new UserDAOImpl();
 	CarDAO cd = new CarDAOImpl();
-	OfferDAO od = new OfferDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
 	public static ConnFactory cf = ConnFactory.getInstance();
