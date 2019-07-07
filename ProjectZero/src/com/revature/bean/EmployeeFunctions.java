@@ -170,6 +170,7 @@ public class EmployeeFunctions {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
 		String sql = "INSERT INTO OWNED (OWNED_ID, CAR_ID, USER_ID, owned_amount_left) VALUES(? ,?, ?, ?)";
+
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 			owned_id++;
