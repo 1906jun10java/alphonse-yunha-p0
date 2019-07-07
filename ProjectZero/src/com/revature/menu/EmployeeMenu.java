@@ -37,7 +37,7 @@ public class EmployeeMenu extends EmployeeFunctions{
 					try {
 					ef.getCarList();
 					ef.removeCarFromLot(car);
-					}catch (SQLException e1) {
+					}catch (SQLException ee) {
 						System.out.println("This car has an offer on it!");
 					}
 					System.out.println("Removed Car from Database.");
