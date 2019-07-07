@@ -24,6 +24,7 @@ public class EmployeeFunctions {
 	int yearManufactured;
 	String carMake;
 	String carModel;
+	int carId = 0;
 	UserDAOImpl userDao = new UserDAOImpl();
 	CarDAO cd = new CarDAOImpl();
 	int userId = 1;
@@ -53,17 +54,10 @@ public class EmployeeFunctions {
 	}
 
 	public void removeCarFromLot(Car car) {
-		System.out.println("Enter year manufactured: ");
-		yearManufactured = sc.nextInt();
-
-		System.out.println("Enter car make: ");
-		carMake = sc.nextLine();
-		carMake = sc.nextLine();
-
-		System.out.println("Enter car model: ");
-		carModel = sc.nextLine();
-
-		car = new Car(userId, yearManufactured, carMake, carModel);
+		System.out.println("Enter CarID:  ");
+		carId = sc.nextInt();
+		
+		car = new Car(carId, yearManufactured, carMake, carModel);
 		try {
 			cd.removeCarFromLot(car);
 		} catch (SQLException e) {
@@ -219,13 +213,6 @@ public class EmployeeFunctions {
 			System.out.println("Error occured, Returning to login menu");
 			e.printStackTrace();
 		}		
-	}
-
-
-
-	public void removeCar() {
-		userDao.removeCarFromLot();
-		
 	}
 
 	public List<Offer> getOfferList() throws SQLException {
