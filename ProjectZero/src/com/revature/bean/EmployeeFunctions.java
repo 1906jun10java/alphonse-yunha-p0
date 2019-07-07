@@ -169,7 +169,7 @@ public class EmployeeFunctions {
 	public void acceptOffer(int owned_id, int car_id, int user_id, int owned_amount_left) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
-		String sql = "INSERT INTO OWNED (OWNED_ID, CAR_ID, USER_ID, owned_amount_left) VALUES(? ,?, ?, ?)";
+		String sql = "INSERT INTO OWNED (OWNED_ID, CARID, USERID, owned_amount_left) VALUES(? ,?, ?, ?)";
 
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
