@@ -12,15 +12,11 @@ import java.util.Scanner;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import com.revature.dao.UserDAOImpl;
-=======
-import com.revature.dao.OfferDAO;
-import com.revature.dao.OfferDAOImpl;
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
-=======
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
+
+
+
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -55,10 +51,7 @@ public class EmployeeFunctions {
 		}
 
 	}
-<<<<<<< HEAD
 
-	
-=======
 	
 	public void viewOffer(Offer o) {
 		viewOffer(o);
@@ -83,7 +76,6 @@ public class EmployeeFunctions {
 		}
 
 	}
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 
 	public void offerDecide(User user) {
 		Scanner scanner = new Scanner(System.in);
@@ -229,7 +221,7 @@ public class EmployeeFunctions {
 			e.printStackTrace();
 		}		
 	}
-<<<<<<< HEAD
+
 
 
 
@@ -246,7 +238,7 @@ public class EmployeeFunctions {
 
 	
 	
-=======
+
 	public List<Offer> getOfferList() throws SQLException {
 		List<Offer> offerList = new ArrayList<Offer>();
 		Connection conn = ConnFactory.getConnection();
@@ -267,6 +259,5 @@ public class EmployeeFunctions {
 		}
 		return offerList;	
 	}
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 
 }
