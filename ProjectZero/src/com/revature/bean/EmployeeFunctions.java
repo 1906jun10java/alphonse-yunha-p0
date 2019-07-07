@@ -10,18 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.revature.dao.CarDAO;
-<<<<<<< HEAD
 import com.revature.dao.CarDAOImpl;
 import com.revature.dao.UserDAOImpl;
-=======
-import com.revature.dao.CarDAOImpl;
 import com.revature.bean.Offer;
-import com.revature.dao.*;
-import com.revature.dao.UserDAOImpl;
 
 
 
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
+
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -61,10 +56,7 @@ public class EmployeeFunctions {
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter CarID:  ");
 		carId = sc.nextInt();
-<<<<<<< HEAD
 		car.setCarID(carId);
-=======
->>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 		car = new Car(carId, yearManufactured, carMake, carModel);
 		try {
 			cd.removeCarFromLot(car);
