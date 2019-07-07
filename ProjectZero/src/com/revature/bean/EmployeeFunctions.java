@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import com.revature.dao.CarDAO;
 import com.revature.dao.CarDAOImpl;
+import com.revature.dao.UserDAOImpl;
 import com.revature.util.ConnFactory;
 
 public class EmployeeFunctions {
@@ -19,6 +20,7 @@ public class EmployeeFunctions {
 	int yearManufactured;
 	String carMake;
 	String carModel;
+	UserDAOImpl userDao = new UserDAOImpl();
 	CarDAO cd = new CarDAOImpl();
 	int userId = 1;
 	Scanner sc = new Scanner(System.in);
@@ -46,26 +48,7 @@ public class EmployeeFunctions {
 
 	}
 
-	public void removeCarFromLot(Car car) {
-		System.out.println("Enter year manufactured: ");
-		yearManufactured = sc.nextInt();
-
-		System.out.println("Enter car make: ");
-		carMake = sc.nextLine();
-		carMake = sc.nextLine();
-
-		System.out.println("Enter car model: ");
-		carModel = sc.nextLine();
-
-		car = new Car(userId, yearManufactured, carMake, carModel);
-		try {
-			cd.removeCarFromLot(car);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	
 
 	public void offerDecide(User user) {
 		Scanner scanner = new Scanner(System.in);
@@ -215,6 +198,19 @@ public class EmployeeFunctions {
 		
 		
 	}
+
+
+
+	public void removeCar() {
+		userDao.removeCarFromLot();
+		
+	}
+
+
+
+	
+
+
 
 	
 	
