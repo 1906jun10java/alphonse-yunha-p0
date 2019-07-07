@@ -37,7 +37,7 @@ public class EmployeeMenu extends EmployeeFunctions{
 					try {
 					ef.getCarList();
 					ef.removeCarFromLot(car);
-					}catch (SQLException ee) {
+					}catch (SQLException e) {
 						System.out.println("This car has an offer on it!");
 					}
 					System.out.println("Removed Car from Database.");
@@ -61,6 +61,12 @@ public class EmployeeMenu extends EmployeeFunctions{
 					break;
 				case 4:
 					ef.viewPayments(user);
+					try {
+						ef.getOwnedList();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					break;
 				case 5:
 					try {

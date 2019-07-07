@@ -26,7 +26,7 @@ public class  Login extends VariableCheck{
 		String userPass = "";
 		String selectionMenu = "1. Enter login credentials"
 							+ "\n2. Login"
-							+ "\n3. signup";
+							+ "\n3. Signup";
 		while(variables.getLoop() == true) {
 			
 			//if(variables.getLogin() == false) {
@@ -54,20 +54,20 @@ public class  Login extends VariableCheck{
 						sc.next();
 					}
 		        	int empCust = sc.nextInt();
+		        	
 		        	if(empCust == 2)
 		        	{
 		        		user.setEmployee(true);
 			        	user.setCustomer(false);
-			        	System.out.println("you are an employee");
+			        	System.out.println("You are an employee");
 			        
 		        	}
-		        	if(empCust == 1) {
+		        	else if(empCust == 1) {
 		        		user.setEmployee(false);
 			        	user.setCustomer(true);
-			        	System.out.println("you are a customer");
+			        	System.out.println("You are a customer");
 			           
-		        	}
-		        	else {
+		        	}else{
 		        		System.out.println("That was not one of the options");
 		        	}
 		        	
@@ -76,8 +76,7 @@ public class  Login extends VariableCheck{
 		        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
 		        		System.out.println("Login successful!");
 		        		success = true;
-		        	}
-		        	else {
+		        	}else{
 		        		System.out.println("Login not successful.");
 		        	}
 		        	
@@ -141,7 +140,7 @@ public class  Login extends VariableCheck{
 		        			+ " please enter your selected options correctly");
 		    }
 				System.out.println("Username: "+ user.getUser()+" Password: "+user.getPass()+
-						"\nEmployee: "+user.getEmployee()+" Custmer: "+user.getCustomer()+
+						"\nEmployee: "+user.getEmployee()+" Customer: "+user.getCustomer()+
 						"\nMenu: "+variables.getMenuOption());
 		//	}
 			

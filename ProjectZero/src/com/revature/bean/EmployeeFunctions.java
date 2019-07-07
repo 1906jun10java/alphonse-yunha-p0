@@ -232,6 +232,27 @@ public class EmployeeFunctions {
 			offerList.add(s);
 		}
 		return offerList;	
-	}	
+	}
+	
+	public List<Owned> getOwnedList() throws SQLException{
+		List<Owned> ownedList = new ArrayList<Owned>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Owned s = null;
+		while (rs.next()) {
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			ownedList.add(s);
+		}
+		return ownedList;	
+	}
 
 }
