@@ -132,7 +132,7 @@ public class EmployeeFunctions {
 
 	public void setOffer(int offer, User user, int carId) throws SQLException  {
 		
-		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?)";
+		String sql = "INSERT INTO PENDINGOFFER (USER_ID, CAR_ID, OFFER_PRICE) VALUES(?,?,?);";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -150,7 +150,7 @@ public class EmployeeFunctions {
 	public void rejectOffer(int offer_id) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 
-		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
+		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
