@@ -9,7 +9,7 @@ public class VariableCheck {
 	protected int menuOption;
 	protected int carNumber;
 	protected int offer;
-	protected boolean login;
+	protected static boolean login;
 	protected boolean loop;
 	
 	/**

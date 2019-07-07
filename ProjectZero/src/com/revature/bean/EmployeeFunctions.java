@@ -52,10 +52,6 @@ public class EmployeeFunctions {
 
 	}
 
-	
-	public void viewOffer(Offer o) {
-		viewOffer(o);
-	}
 	public void removeCarFromLot(Car car) {
 		System.out.println("Enter year manufactured: ");
 		yearManufactured = sc.nextInt();
@@ -160,6 +156,10 @@ public class EmployeeFunctions {
 	}
 	public void rejectOffer(int offer_id) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/1906jun10java/alphonse-yunha-p0.git
 		String sql = "DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -177,7 +177,7 @@ public class EmployeeFunctions {
 	public void acceptOffer(int car_id, int user_id, int amount_owe) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
-		String sql = "INSERT INTO OWNED (CAR_ID, USER_ID, owned_amount_left) VALUES (?, ?, ?);";
+		String sql = "INSERT INTO OWNED (CAR_ID, USER_ID, owned_amount_left) VALUES (?, ?, ?)";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -249,6 +249,6 @@ public class EmployeeFunctions {
 			offerList.add(s);
 		}
 		return offerList;	
-	}
+	}	
 
 }
