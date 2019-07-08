@@ -79,7 +79,7 @@ public class  Login extends VariableCheck{
 		        	}else{
 		        		System.out.println("Login not successful.");
 		        	}
-		        	
+		        	user.setUser(userName);
 		        	
 		            break;
 		     
