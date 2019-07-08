@@ -41,6 +41,8 @@ public class  Login extends VariableCheck{
 				
 				switch (variables.getMenuOption()) {
 		        case 1:
+		        	user.setEmployee(false);
+		        	user.setCustomer(false);
 		        	System.out.println("Enter Username: ");
 		        	userName = sc.nextLine();
 		        	userName = sc.nextLine();
@@ -97,6 +99,8 @@ public class  Login extends VariableCheck{
 		            break;
 		            
 		        case 2:
+		        	user.setEmployee(false);
+		        	user.setCustomer(false);
 		        System.out.println("Enter Username: ");
 	        	userName = sc.nextLine();
 	        	userName = sc.nextLine();

@@ -80,6 +80,7 @@ public class EmployeeFunctions {
 				int accept = sc.nextInt();
 				retreiveCarUserAmount(user, accept);
 				acceptOffer(user.getOffer_id(), user.getCar_id(), user.getUser_id(), user.getOffer_price());
+			//	makeUnavailable(user.getCar_id());
 				rejectOffer(accept);
 				
 			}
@@ -165,6 +166,22 @@ public class EmployeeFunctions {
 		}
 		
 		
+	}
+	public void makeUnavailable(int car_id) throws SQLException  {
+		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
+		//UPDATE LOT SET CAR_OWNER_STATE = 'Unavailable'WHERE CAR_ID = ?;
+		String sql = "UPDATE LOT SET CAR_OWNER_STATE = 'Unavailable' WHERE CAR_ID = "+ car_id;
+		                             
+		try (Connection conn = ConnFactory.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+		
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	public void acceptOffer(int owned_id, int car_id, int user_id, int owned_amount_left) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
