@@ -12,6 +12,7 @@ public class User {
 	private int user_id;
 	private int offer_price;
 	private int offer_id;
+	private String userType;
 	private int owned_amount_left;
 	
 	public int getOwned_amount_left() {
@@ -23,11 +24,12 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(int userId, String userName, String userPass) {
+	public User(int userId, String userName, String userPass, String userType) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userPass = userPass;
+		this.userType = userType;
 	}
 	
 	public String getUser() {
@@ -117,6 +119,12 @@ public class User {
 	}
 	public void setOffer_id(int offer_id) {
 		this.offer_id = offer_id;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 }

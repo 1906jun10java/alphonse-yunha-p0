@@ -22,9 +22,7 @@ public class SignupFunctions {
     	newUser.setUserName(sc.next());
     	
     	System.out.println();
-    	
-    	
-    	
+    	 
 //    	Connection conn = ConnFactory.getConnection();
 //		Statement stmt = conn.createStatement();
 //		ResultSet rs = stmt.executeQuery("SELECT * FROM USERS;");//WHERE user_name = '"+newUser.getUserName()+"'

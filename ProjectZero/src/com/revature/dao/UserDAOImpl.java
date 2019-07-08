@@ -34,6 +34,9 @@ public class UserDAOImpl implements UserDAO {
 				String userPass = rs.getString("USER_PASS");
 				u.setPass(userPass);
 				
+				String userType = rs.getString("USER_TYPE");
+				u.setUserType(userType);
+				
 				
 			}
 		} catch (SQLException e) {
@@ -98,7 +101,8 @@ public List<User> getUserid(User user){
 				int userId = rs.getInt("USER_ID");
 				String userName = rs.getString("USER_NAME");
 				String userPass = rs.getString("USER_PASS");
-				u = new User(userId,userName, userPass);
+				String userType = rs.getString("USER_TYPE");
+				u = new User(userId,userName, userPass, userType);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -128,7 +132,8 @@ public List<User> getUserid(User user){
 				int userId = rs.getInt("USER_ID");
 				String userName = rs.getString("USER_NAME");
 				String userPass = rs.getString("USER_PASS");
-				u = new User(userId,userName, userPass);
+				String userType = rs.getString("USER_TYPE");
+				u = new User(userId,userName, userPass, userType);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -148,11 +153,12 @@ public List<User> getUserid(User user){
 	@Override
 	public int createUser(User user) {
 		int usersCreated = 0;
-		String sql = "INSERT INTO USERS(USER_NAME, USER_PASS) VALUES (?,?)";
+		String sql = "INSERT INTO USERS(USER_NAME, USER_PASS, USER_TYPE) VALUES (?,?,?)";
 		try(Connection conn = ConnFactory.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)){
 			ps.setString(1, user.getUser());
 			ps.setString(2, user.getPass());
+			ps.setString(3, user.getUserType());
 			usersCreated = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -161,12 +167,6 @@ public List<User> getUserid(User user){
 		return usersCreated;
 	}
 
-	@Override
-	public int userType(User user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	public static boolean loginConfirm(String userName, String userPass) {
 		List<User> userList = new ArrayList<>();
 		try(Connection conn = ConnFactory.getConnection();){
@@ -233,9 +233,7 @@ public List<User> getUserid(User user){
 		}
 
 				
-		}
-		
-
+	}
 		
 	}
 		

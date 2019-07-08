@@ -25,7 +25,7 @@ public class  Login extends VariableCheck{
 		String userName = "";
 		String userPass = "";
 		String selectionMenu = "1. Enter login credentials"
-							+ "\n2. Login"
+							+ "\n2. Employee Login"
 							+ "\n3. Signup";
 		while(variables.getLoop() == true) {
 			
@@ -48,31 +48,11 @@ public class  Login extends VariableCheck{
 		        	userPass = sc.nextLine();
 		        	user.setUser(userName);
 		        	user.setPass(userPass);
-		        	System.out.println("Are you a customer(1) or an employee(2)");
-		        	while(!sc.hasNextInt()) {
-						System.out.println("Invalid input try again \n"+selectionMenu);
-						sc.next();
-					}
-		        	int empCust = sc.nextInt();
-		        	
-		        	if(empCust == 2)
-		        	{
-		        		user.setEmployee(true);
-			        	user.setCustomer(false);
-			        	System.out.println("You are an employee");
-			        
-		        	}
-		        	else if(empCust == 1) {
+		        	if(user.getUserType() == null) {
 		        		user.setEmployee(false);
 			        	user.setCustomer(true);
-			        	System.out.println("You are a customer");
-			           
-		        	}else{
-		        		System.out.println("That was not one of the options");
-		        	}
-		        	
-		        	
-		        	
+			        	System.out.println("Hello Customer!");
+		        	}       	
 		        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
 		        		System.out.println("Login successful!");
 		        		success = true;
@@ -81,17 +61,12 @@ public class  Login extends VariableCheck{
 		        	}
 		        	user.setUser(userName);
 		        	
-		            break;
-		     
-		        case 2:
-		        	System.out.print("Enter");
-		        	if((user.getEmployee() == true || user.getCustomer() == true) && user.getUser() != null && user.getPass() != null && success ==true) {
+		        	if((user.getCustomer() == true) && user.getUser() != null && user.getPass() != null && success ==true) {
 		        		//check the table of either employee or customer
 		        		//and compare the username and password
 		        		//then set loops to false
 		        		try {
-		        			
-							if(log.checkLoginEmployee(user) == true) {
+		        			if(log.checkLoginEmployee(user) == true) {
 								variables.setLoop(false);
 								if (user.getCustomer() == true ) {
 									user.setTravelTo("employee");
@@ -106,6 +81,62 @@ public class  Login extends VariableCheck{
 								System.out.println("");
 							}
 							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		        		
+		        		
+		        		
+		        		
+		        	}
+		        	//call or maker function here to compare the 
+		        	//usernames and password in the employee/customer table
+		        	
+		            break;
+		            
+		        case 2:
+		        System.out.println("Enter Username: ");
+	        	userName = sc.nextLine();
+	        	userName = sc.nextLine();
+	        	System.out.println("Enter Password: ");
+	        	userPass = sc.nextLine();
+	        	user.setUser(userName);
+	        	user.setPass(userPass);
+	        	if(user.getUserType() == null) {
+	        		user.setEmployee(true);
+		        	user.setCustomer(false);
+		        	System.out.println("Hello Employee! ");
+		           
+	        	}       	
+	        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
+	        		System.out.println("Login successful!");
+	        		success = true;
+	        	}else{
+	        		System.out.println("Login not successful.");
+	        	}
+	        	user.setUser(userName);
+		        	
+		        	if((user.getEmployee() == true) && user.getUser() != null && user.getPass() != null && success ==true) {
+		        		//check the table of either employee or customer
+		        		//and compare the username and password
+		        		//then set loops to false
+		        		try {
+		        			if(log.checkLoginEmployee(user) == true) {
+								variables.setLoop(false);
+								if (user.getCustomer() == true ) {
+									user.setTravelTo("employee");
+									
+								}
+								if (user.getEmployee() == true ) {
+									user.setTravelTo("customer");
+								}
+								
+							}
+							else {
+								System.out.println("");
+							}
 							
 							
 						} catch (SQLException e) {
