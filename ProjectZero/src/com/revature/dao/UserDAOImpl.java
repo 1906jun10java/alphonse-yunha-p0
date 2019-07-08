@@ -208,7 +208,7 @@ public List<User> getUserid(User user){
 				
 				String user_name = rs.getString("USER_NAME");
 				int user_id = rs.getInt("USER_ID");
-				if(user_name.equals(user.getUser())) {
+				if(user_name== "al") {
 					user.setUserId(user_id);
 				}
 			}	
