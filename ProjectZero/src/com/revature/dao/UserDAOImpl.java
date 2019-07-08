@@ -51,12 +51,12 @@ public List<User> getUserid(User user){
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);){
 			while(rs.next()) {
-				
 				int userId = rs.getInt("USER_ID");
-				
 				user.setUser_id(userId);
 				
-				System.out.println(user.getUser_id()+"******************");
+			}if(user.getUser_id() == user.getUser_id()) {
+				System.out.println(user.getUser_id());
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,27 +66,25 @@ public List<User> getUserid(User user){
 	}
 	
 	
-//	public List<Owned> getOwnedList() throws SQLException {
-//		List<Owned> ownedList = new ArrayList<Owned>();
-//		Connection conn = ConnFactory.getConnection();
-//		Statement stmt = conn.createStatement();
-//		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
-//		ResultSetMetaData rsmd = rs.getMetaData();
-//		int columnsNumber = rsmd.getColumnCount();
-//		String colName;
-//		
-//		Owned s = null;
-//		while (rs.next()) {
-//			for (int i = 1; i <= columnsNumber; i++) {
-//				colName = rsmd.getColumnName(i);
-//				System.out.print(colName+" ["+rs.getString(i) + "] ");
-//			}
-//			System.out.println();
-//			ownedList.add(s);
-//		}
-//		return ownedList;	
-//	}
-	
+	public List<Owned> getOwnedList() throws SQLException {
+	List<Owned> ownedList2 = new ArrayList<Owned>();
+	Connection conn = ConnFactory.getConnection();
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
+	ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Owned s = null;
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			ownedList2.add(s);
+			return ownedList2;
+		}
+
 	public User getUserById(String id) {
 		User u = null;
 		String sql = "SELECT * FROM USERS WHERE USER_NAME = ?";
