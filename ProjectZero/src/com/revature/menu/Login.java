@@ -53,9 +53,9 @@ public class  Login extends VariableCheck{
 		        	if(user.getUserType() == null) {
 		        		user.setEmployee(false);
 			        	user.setCustomer(true);
-			        	System.out.println("Hello Customer!");
 		        	}       	
 		        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
+		        		System.out.println("Hello Customer!");
 		        		System.out.println("Login successful!");
 		        		success = true;
 		        	}else{
@@ -111,10 +111,10 @@ public class  Login extends VariableCheck{
 	        	if(user.getUserType() == null) {
 	        		user.setEmployee(true);
 		        	user.setCustomer(false);
-		        	System.out.println("Hello Employee! ");
 		           
 	        	}       	
 	        	if(UserDAOImpl.loginConfirm(user.getUser(), user.getPass()) == true) {
+		        	System.out.println("Hello Employee! ");
 	        		System.out.println("Login successful!");
 	        		success = true;
 	        	}else{
