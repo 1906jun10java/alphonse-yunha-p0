@@ -110,7 +110,7 @@ public class CarDAOImpl implements CarDAO {
 
 	public int addCarToLot(Car car) {
 		int addedCar = 0;
-		String sql = "INSERT INTO LOT(CAR_YEAR, CAR_MAKE, CAR_MODEL) VALUES(?,?,?)";
+		String sql = "INSERT INTO LOT(CAR_YEAR, CAR_MAKE, CAR_MODEL, CAR_OWNER_STATE) VALUES(?,?,?, 'Available')";
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
