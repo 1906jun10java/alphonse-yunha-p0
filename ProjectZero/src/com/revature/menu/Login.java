@@ -24,7 +24,7 @@ public class  Login extends VariableCheck{
 		variables.setLogin(false);
 		String userName = "";
 		String userPass = "";
-		String selectionMenu = "1. Enter login credentials"
+		String selectionMenu = "1. Customer Login"
 							+ "\n2. Employee Login"
 							+ "\n3. Signup";
 		while(variables.getLoop() == true) {
