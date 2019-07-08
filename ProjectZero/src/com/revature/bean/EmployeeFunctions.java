@@ -273,6 +273,9 @@ public class EmployeeFunctions {
 			for (int i = 1; i <= columnsNumber; i++) {
 				colName = rsmd.getColumnName(i);
 				System.out.print(colName+" ["+rs.getString(i) + "] ");
+				if(colName.equals("OWNED_AMOUNT_LEFT")) {
+					System.out.println(" MonthlyPayment ["+rs.getInt(i)/5+"]");
+				}
 			}
 			System.out.println();
 			ownedList.add(s);
