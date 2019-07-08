@@ -263,7 +263,7 @@ public class EmployeeFunctions {
 		Connection conn = ConnFactory.getConnection();
 		Statement stmt = conn.createStatement();
 		
-		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED WHERE USERID ="+user.getUser_id());
+		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED WHERE USERID ="+user.getUserId());
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
 		String colName;
