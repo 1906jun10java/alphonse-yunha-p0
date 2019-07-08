@@ -22,6 +22,7 @@ public class CustomerFunctions {
 	public void ViewMyCars(User user) throws SQLException {
 		//displays list of available cars previously purchased 
     	//from the sql table
+		userDao.getUserid(user);
 		ef.getMyOwnedList(user);
 
     	//System.out.println("You have no cars ");

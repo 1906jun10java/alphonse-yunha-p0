@@ -19,6 +19,7 @@ import com.revature.util.ConnFactory;
 public class UserDAOImpl implements UserDAO {
 
 	public List<User> getUser(){
+		
 		List<User> userList = new ArrayList<>();
 		String sql = "SELECT * FROM USERS";
 		
@@ -33,6 +34,7 @@ public class UserDAOImpl implements UserDAO {
 				String userPass = rs.getString("USER_PASS");
 				u.setPass(userPass);
 				
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -40,6 +42,30 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
+public List<User> getUserid(User user){
+		
+		List<User> userList = new ArrayList<>();
+		String sql = "SELECT * FROM USERS";
+		
+		try(Connection conn = ConnFactory.getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);){
+			while(rs.next()) {
+				
+				int userId = rs.getInt("USER_ID");
+				
+				user.setUser_id(userId);
+				
+				System.out.println(user.getUser_id()+"******************");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userList;
+	}
+	
+	
 //	public List<Owned> getOwnedList() throws SQLException {
 //		List<Owned> ownedList = new ArrayList<Owned>();
 //		Connection conn = ConnFactory.getConnection();
@@ -179,6 +205,7 @@ public class UserDAOImpl implements UserDAO {
 			Statement stmt= conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
+				
 				String user_name = rs.getString("USER_NAME");
 				int user_id = rs.getInt("USER_ID");
 				if(user_name.equals(user.getUser())) {
