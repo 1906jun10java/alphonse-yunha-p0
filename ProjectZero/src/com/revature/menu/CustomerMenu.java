@@ -1,5 +1,6 @@
 package com.revature.menu;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 import com.revature.bean.CustomerFunctions;
 import com.revature.bean.User;
@@ -35,7 +36,12 @@ public class CustomerMenu{
 		        	customer.ViewCarLot();
 		            break;
 		        case 2:
-		        	customer.ViewMyCars();
+		        	try {
+						customer.ViewMyCars(user);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 		            break;
 		        case 3:
 		        	customer.MakeAnOffer(user, customer, variables);

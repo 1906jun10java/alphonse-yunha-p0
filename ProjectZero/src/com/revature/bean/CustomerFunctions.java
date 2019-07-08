@@ -19,11 +19,12 @@ public class CustomerFunctions {
     	//System.out.println("1.car, 2.car, 3.car");
 	}
 	
-	public void ViewMyCars() {
+	public void ViewMyCars(User user) throws SQLException {
 		//displays list of available cars previously purchased 
     	//from the sql table
+		ef.getMyOwnedList(user);
 
-    	System.out.println("You have no cars ");
+    	//System.out.println("You have no cars ");
 	}
 	
 	public void MakeAnOffer(User user, CustomerFunctions customer, VariableCheck variables) {

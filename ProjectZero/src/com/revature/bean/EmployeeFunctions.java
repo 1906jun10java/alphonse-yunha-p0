@@ -169,15 +169,16 @@ public class EmployeeFunctions {
 	public void acceptOffer(int owned_id, int car_id, int user_id, int owned_amount_left) throws SQLException  {
 		//DELETE FROM PENDINGOFFER WHERE OFFER_ID = ?;
 		
-		String sql = "INSERT INTO OWNED (OWNED_ID, CARID, USERID, owned_amount_left) VALUES(? ,?, ?, ?)";
+		String sql = "INSERT INTO OWNED (CARID, USERID, owned_amount_left) VALUES(?, ?, ?)";
 
 		try (Connection conn = ConnFactory.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 			owned_id++;
-			ps.setInt(1, owned_id);
-			ps.setInt(2, car_id);
-			ps.setInt(3, user_id);
-			ps.setInt(4, owned_amount_left);
+			
+			ps.setInt(1, car_id);
+			ps.setInt(2, user_id);
+			ps.setInt(3, owned_amount_left);
+			//ps.setInt(4, owned_id);
 			ps.executeUpdate();
 			
 			
@@ -242,6 +243,26 @@ public class EmployeeFunctions {
 		Connection conn = ConnFactory.getConnection();
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+		String colName;
+		
+		Owned s = null;
+		while (rs.next()) {
+			for (int i = 1; i <= columnsNumber; i++) {
+				colName = rsmd.getColumnName(i);
+				System.out.print(colName+" ["+rs.getString(i) + "] ");
+			}
+			System.out.println();
+			ownedList.add(s);
+		}
+		return ownedList;	
+	}
+	public List<Owned> getMyOwnedList(User user) throws SQLException{
+		List<Owned> ownedList = new ArrayList<Owned>();
+		Connection conn = ConnFactory.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED WHERE USERID ="+user.getUser_id());
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
 		String colName;

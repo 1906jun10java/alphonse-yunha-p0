@@ -3,6 +3,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.revature.bean.CustomerFunctions;
+import com.revature.bean.Offer;
+import com.revature.bean.Owned;
 import com.revature.bean.User;
 import com.revature.util.ConnFactory;
 
@@ -37,6 +40,26 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
+//	public List<Owned> getOwnedList() throws SQLException {
+//		List<Owned> ownedList = new ArrayList<Owned>();
+//		Connection conn = ConnFactory.getConnection();
+//		Statement stmt = conn.createStatement();
+//		ResultSet rs = stmt.executeQuery("SELECT * FROM OWNED");
+//		ResultSetMetaData rsmd = rs.getMetaData();
+//		int columnsNumber = rsmd.getColumnCount();
+//		String colName;
+//		
+//		Owned s = null;
+//		while (rs.next()) {
+//			for (int i = 1; i <= columnsNumber; i++) {
+//				colName = rsmd.getColumnName(i);
+//				System.out.print(colName+" ["+rs.getString(i) + "] ");
+//			}
+//			System.out.println();
+//			ownedList.add(s);
+//		}
+//		return ownedList;	
+//	}
 	
 	public User getUserById(String id) {
 		User u = null;
